@@ -1,0 +1,88 @@
+.navbar {
+    margin: 0;
+    padding: 0;
+    top: 10px;
+    left: 0;
+    width: 100%;
+    position: fixed;
+}
+
+.navbar-buttons {
+    display: inline;
+    margin: 0;
+    padding: 15px;
+    top: 0;
+    float: right;
+    margin-right: 50px;
+}
+
+.navbar-buttons input[type=text]{
+    padding: 6px;
+    border: 0 solid;
+    border-radius: 5px;
+    margin-right: 35px;
+    font-size: 15px;
+}
+
+.navbar-logo {
+    float: left;
+    font-size: x-large;
+    font-weight: 450;
+    font-style: italic;
+    margin-left: 50px;
+    padding: 10px;
+    color: #B7A0D6;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.vl {
+    border-left: 1px solid #d4d4dc;
+    height: 50px;    
+    display: inline;
+    margin-right: 10px;
+    margin-left: 6px;
+}
+
+.nav-item {
+    display: inline;
+    text-align: center;
+    padding: 15px 15px;
+}
+
+.nav-item a { 
+    text-decoration: none;
+    color: #d4d4dc;
+    font-size: large;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.nav-item a:hover {
+    color: #feda6a;
+    width: 100%;
+}
+
+.login-button {
+    padding: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border: 2px solid #d4d4dc;
+    border-radius: 25px;
+}
+
+.login-button:hover {
+    border: 2px solid #feda6a;
+}
+
+.signup-button {
+    padding: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border: 2px solid #d4d4dc;
+    border-radius: 25px;
+}
+
+.signup-button:hover {
+    border: 2px solid #feda6a;
+}
