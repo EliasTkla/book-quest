@@ -1,0 +1,41 @@
+body {
+    background-color: #FDFDFD;
+    background-image: url("./assets/images/interlaced.png");
+    background-size: 300px;
+    width: 100%;
+    min-height: 100%;
+    margin: 0;
+}
+
+body * {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    transition: 0.5s;
+}
+
+.body-container {
+    height: 100%;
+}
+
+.app-content {
+    height: 100%;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+        "navbar"
+        "pages"
+        "footer";
+}
+
+.grid-item-1 {
+    grid-area: navbar;
+    margin-top: 0;
+}
+
+.grid-item-2 {
+    grid-area: pages;
+}
+
+.grid-item-3 {
+    grid-area: footer;
+}
