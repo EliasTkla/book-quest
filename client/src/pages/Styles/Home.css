@@ -4,16 +4,28 @@
     margin: 5vh auto;
     display: grid;
     grid-template-columns: repeat(2, 50%);
-    grid-auto-rows: minmax(70vh, auto);
     grid-template-areas: 
         "texts1 image1"
-        "books books"
         "image2 texts2";
+    row-gap: 20vh;
+}
+
+.home-panel p {
+    font-size: large;
+    line-height: 200%;
 }
 
 .text-content {
     grid-area: texts1;
-    color: #1A1A23;
+    display: block;
+    margin-top: -25px;
+    color: #FDFDFD;
+    width: 140%;
+    overflow: auto;
+    margin-left: -5%;
+    padding: 20px;
+    border-radius: 25px;
+    background-color: #4A80F0;
 }
 
 .text-content h1 {
@@ -21,12 +33,13 @@
     font-size: 60px;
     text-transform: uppercase;
     font-weight: bolder;
+    color: #1A1A23;
 }
 
 .text-content p {
     width: 70%;
     margin-left: 0;
-    line-height: 150%;
+    line-height: 200%;
 }
 
 .text-content button {
@@ -39,8 +52,8 @@
 }
 
 .text-content button:hover {
-    color: #FDFDFD;
-    background-color: #4A80F0;
+    color: #4A80F0;
+    background-color: #FDFDFD;
 }
 
 .home-image {
@@ -49,91 +62,88 @@
     transform: scaleX(-1);
 }
 
-.book-showcase {
-    grid-area: books;
-    width: 100%;
-    height: 500px;
-    margin-top: 20vh;
-    margin-bottom: 20vh;
-    border-radius: 25px;
-    text-align: center;
-    background-color: #FDFDFD;
-}
-
-.book-showcase h2 {
-    width: 40%;
-    margin: auto;
-    margin-top: 20px;
-    margin-bottom: 2%;
-    line-height: 200%;
-    color: #1A1A23;
-    border-bottom: 5px solid #1A1A23;
-    text-transform: uppercase;
-}
-
-.book-slide {
-    width: 86%;
-    height: 320px;
-    margin: auto;
-    padding: 10px;
-    border-radius: 25px;
-    overflow: hidden;
-    border: 10px solid #1A1A23;
-    background-color: #FDFDFD;
-}
-
-.book-slide img {
-    position: relative;
-    float: left;
-    width: 200px;
-    height: 300px;
-    margin: 1%;
-    border-radius: 5px;
-    transition: 0.5s;
-}
-
-.book-slide img:hover {
-    transform: scale(0.95);
-    box-shadow: 0px 5px 5px #4A80F0;
-}
-
 .home-image2 {
     grid-area: image2;
     width: 100%;
+    margin: auto;
+    margin-bottom: 0%;
     transform: scaleX(-1);
 }
 
 .quote-content {
     grid-area: texts2;
-    width: 70%;
-    height: 40vh;
+    display: block;
+    color: #FDFDFD;
+    width: 130%;
+    overflow: auto;
+    margin-left: -40%;
+    padding: 20px;
+    padding-top: 25%;
+    border-radius: 25px;
+    background-color: #4A80F0;
+}
+
+.quote-content p {
+    width: 60%;
     margin: auto;
+    padding-left: 25%;
+    color: #FDFDFD;
 }
 
-.quote-content h1 {
-    text-align: right;
-}
-
-@media (max-width: 900px) {
+@media (max-width: 1440px) {
     .home-panel {
+        width: 90%;
+        display: grid;
         grid-template-columns: 100%;
-        grid-auto-rows: minmax(60vh, auto);
         grid-template-areas: 
-            "texts1"
-            "image1"
-            "books"
-            "texts2"
-            "image2";
+        "texts1"
+        "image1"
+        "texts2"
+        "image2";
+        row-gap: 20vh;
     }
 
-    .book-showcase {
-        margin-top: 0;
-        margin-bottom: 0;
+    .text-content {
+        margin: -25px auto;
+        width: 90%;
+        padding: 20px;
+        border-radius: 25px;
+        color: #FDFDFD;
+        background-color: #4A80F0;
+    }
+
+    .home-image {
+        width: 80%;
+        margin-top: -250px;
+        transform: scaleX(-1);
     }
 
     .quote-content {
-        width: 90%;
-        height: 20vh;
-        text-align: right;
+        width: 80%;
+        margin: auto;
+        margin-bottom: -15%;
+        padding-top: 25%;
+    }
+
+    .quote-content p {
+        width: 70%;
+        margin: auto;
+        margin-top: -20%;
+        margin-bottom: 10%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-left: -10%;
+    }
+
+    .home-image2 {
+        width: 70%;
+        margin-bottom: -10%;
+    }
+}
+
+@media (max-width: 900px) {
+    .home-image {
+        margin-top: -120px;
+        margin-bottom: -50px;
     }
 }

@@ -2,7 +2,7 @@ import React, { useState} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Axios from 'axios';
 import { useSignIn } from 'react-auth-kit';
-import './Styles/Login.css';
+import './Styles/Form.css';
 
 function Login() {
 
@@ -18,7 +18,6 @@ function Login() {
         pwd: pwd,
       }).then((response) => {
         if(!response.data.message){
-          console.log("Error in server");
           signIn({
             token: response.data.token,
             expiresIn: 300,
@@ -27,31 +26,27 @@ function Login() {
           });
           navigate("/mylog");
         } else {
-          document.getElementById("login-error").style.color = "red";
-          document.getElementById("login-error").innerHTML = response.data.message;
+          document.getElementById("form-error").style.color = "red";
+          document.getElementById("form-error").innerHTML = response.data.message;
         }
       })
       .catch(err=>console.log(err));;
     } else {
-      document.getElementById("login-error").style.color = "red";
-      document.getElementById("login-error").innerHTML = 'Please enter your info to login!';
+      document.getElementById("form-error").style.color = "red";
+      document.getElementById("form-error").innerHTML = 'Please enter your info to login!';
     }
   }
 
   return (
-    <div className='login-page'>
-    <div className='login-form'>
-      <h1>Welcome Back!</h1>
-      <h4 id='login-error'></h4><br/>
+    <div className='form-page'>
       <form>
-        <label>Username</label><br/>
-        <input type="text" name="username" onChange={(e => setUsername(e.target.value))} required /><br/>
-        <label>Password</label><br/>
-        <input type="password" name="password" onChange={(e => setPwd(e.target.value))} required /><br/>
-        <h5>Don't have an account? <Link to='/signup'>Sign Up Here</Link></h5>
+        <h1>Welcome Back!</h1>
+        <h4 id='form-error'>Enter Info</h4>      
+        <input type="text" name="username" onChange={(e => setUsername(e.target.value))} placeholder="Username" required /><br/><br/>
+        <input type="password" name="password" onChange={(e => setPwd(e.target.value))} placeholder="Password" required /><br/>
+        <h5>Don't have an account? <Link to='/signup'>Sign Up</Link></h5>
         <button type="button" onClick={login}>Login</button>
       </form>
-    </div>
     </div>
   )
 }

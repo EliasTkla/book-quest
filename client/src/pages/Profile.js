@@ -3,7 +3,7 @@ import Axios from 'axios';
 import { useIsAuthenticated } from 'react-auth-kit';
 import { useNavigate } from 'react-router-dom';
 import { useAuthUser } from 'react-auth-kit';
-import './Styles/Profile.css';
+import './Styles/Form.css';
 
 function Profile() {
 
@@ -22,8 +22,9 @@ function Profile() {
   const [focusPwd, setFocusPwd] = useState();
   const [matchPwd, setMatchPwd] = useState();
   
-  const [updateStatus, setUpdateStatus] = useState(false);
+  const [updateStatus, setUpdateStatus] = useState('_');
   const [verifyPwd, setVerifyPwd] = useState();
+  const [verified, setVerified] = useState(false);
   const email = authUser().email;
 
   useEffect(() => {
@@ -33,8 +34,8 @@ function Profile() {
           email: email,
         }).then((response) => {
           if(response.data.message){
-            document.getElementById("update-error").style.color = "red";
-            document.getElementById("update-error").innerHTML = response.data.message;
+            document.getElementById("form-error").style.color = "red";
+            document.getElementById("form-error").innerHTML = response.data.message;
           } else { 
             document.getElementById("email").value = response.data[0].email;
             document.getElementById("username").value = response.data[0].username;
@@ -48,26 +49,28 @@ function Profile() {
     } else {
       navigate("/login");
     }
-  }, []);
+  }, [email, isAuthenticated, navigate]);
 
   useEffect(() => {
     if ((!focusUsername || focusUsername) && newUsername!= "" && newUsername!= null && !user_format.test(newUsername)){
-      document.getElementById("username-error").style.display = "inline";
+      document.getElementById("username-error").style.color = "red";
     } else {
-      document.getElementById("username-error").style.display = "none";
+      document.getElementById("username-error").style.color = "#1a1a23";
     }
 
     if ((!focusPwd || focusPwd) && newPwd !== "" && newPwd !== null && !pwd_format.test(newPwd)){
-      document.getElementById("pass-error").style.display = "inline";
+      document.getElementById("pass-error").style.color = "red";
     } else {
-      document.getElementById("pass-error").style.display = "none";
+      document.getElementById("pass-error").style.color = "#1a1a23";
     } 
 
-    if ((!matchPwd || matchPwd) && confirmPwd !== newPwd){
-      document.getElementById("mpass-error").style.display = "inline";
-    } else {
-      document.getElementById("mpass-error").style.display = "none";
-    } 
+    if(verified){
+      if (pwd_format.test(newPwd) && ((matchPwd || !matchPwd) && matchPwd!= "" && matchPwd!= null && confirmPwd !== newPwd)){
+        document.getElementById("mpass-error").style.color = "red";
+      } else{
+        document.getElementById("mpass-error").style.color = "#1a1a23";
+      }
+    }
   });
 
   const updateUser = () => {
@@ -79,10 +82,10 @@ function Profile() {
           newPwd: newPwd,
         }).then((response) => {
           if(response.data.message){
-            document.getElementById("update-error").style.color = "red";
+            document.getElementById("form-error").style.color = "red";
             setUpdateStatus(response.data.message);
           } else {
-            console.log(response.data.message1);
+            document.getElementById("form-error").innerHTML = "Successfully updated!";
             cancelUpdate();
           }
         })
@@ -91,7 +94,7 @@ function Profile() {
         console.log(error);
       } 
     } else {
-      document.getElementById("update-error").style.color = "red";
+      document.getElementById("form-error").style.color = "red";
       setUpdateStatus('Please fill in the form to update profile!');
     }
   }
@@ -105,74 +108,75 @@ function Profile() {
       email: email,
     }).then((response) => {
       if(response.data.message){
-        document.getElementById("verify-error").style.color = "red";
-        document.getElementById("verify-error").innerHTML = response.data.message;
+        document.getElementById("form-error").style.color = "red";
+        document.getElementById("form-error").innerHTML = response.data.message;
       } else { 
         if(response.data[0].password === verifyPwd){
-          document.getElementById("verify-error").style.color = "#1A1A23";
-          document.getElementById("v-overlay").style.display = "none";
-          document.getElementById("v-password").value = "";
+          cancelVerify();
+          setVerified(true);
           enableInputs();
         } else {
           document.getElementById("verify-error").style.color = "red";
-          document.getElementById("verify-error").innerHTML = "Incorrect password";
         }
       }
     })
     .catch(err=>console.log(err));;
   }
 
+  const cancelVerify = () => {
+    document.getElementById("verify-error").style.color = "#1A1A23";
+    document.getElementById("v-overlay").style.display = "none";
+    document.getElementById("v-password").value = "";
+  }
+
   const enableInputs = () => {
     document.getElementById("username").disabled = false;
     document.getElementById("password").disabled = false;
-    document.getElementById("password-match").disabled = false;
-    document.getElementById("confirm").style.display = "inline";
-    document.getElementById("password-match").style.display = "inline";
-
-    document.getElementById("submit").style.display = "inline";
-    document.getElementById("cancel").style.display = "inline";
-    document.getElementById("update").style.display = "none";
+    document.getElementById("username").style.backgroundColor = "#FDFDFD";
+    document.getElementById("password").style.backgroundColor = "#FDFDFD";
   }
 
   const cancelUpdate = () => {
-    document.getElementById("update-error").style.color = "#1A1A23";
+    document.getElementById("form-error").style.color = "#FDFDFD";
+    document.getElementById("form-error").innerHTML = "_";
     document.getElementById("username").disabled = true;
     document.getElementById("password").disabled = true;
-    document.getElementById("password-match").disabled = true;
-    document.getElementById("confirm").style.display = "none";
-    document.getElementById("password-match").style.display = "none";
+    document.getElementById("username").style.backgroundColor = "lightgray";
+    document.getElementById("password").style.backgroundColor = "lightgray";
     document.getElementById("password-match").value = "";
-
-    document.getElementById("submit").style.display = "none";
-    document.getElementById("cancel").style.display = "none";
-    document.getElementById("update").style.display = "inline";
+    setVerified(false);
   }
 
   return (
-    <div className='profile-form'>
-      <img className='profile-icon' src={require('../assets/images/user-icon.png')} alt='profile-icon' /><br/>
-      <h1>Profile Information</h1>
-      <h4 id='update-error'>{updateStatus}</h4><br/>
+    <div className='form-page'>
       <div id="v-overlay">
         <div className="v-overlay-inner">
-          <h4 id='verify-error'>Check</h4><br/>
-          <h3>Enter password to verify user!</h3>
+          <i className="fa-solid fa-xmark" onClick={()=> {cancelVerify()}}></i>
+          <h4 id='verify-error'>Incorrect password</h4>
+          <h4>Enter password to verify user!</h4>
           <input id='v-password' type="password" name="password" onChange={(e => setVerifyPwd(e.target.value))}/><br/><br/>
-          <button id='vsubmit' type='button' onClick={verifyUser}>verify</button>
+          <button type='button' onClick={verifyUser}>Verify</button>
         </div>
       </div>
       <form>
-        <label>Email <span id='email-error'>[invalid email]</span></label><br/>
+        <img className='profile-icon' src={require('../assets/images/user-icon.png')} alt='profile-icon' /><br/>
+        <h1>Profile Information</h1>
+        <h4 id='form-error'>{updateStatus}</h4>
         <input id='email' type="text" name="email"  disabled/><br/>
-        <label>Username <span id='username-error'>[3-15 characters]</span></label><br/>
+        <label id='username-error'>3-15 characters!</label>
         <input id='username' type="text" name="username" onFocus={() => {setFocusUsername(true)}} onBlur={() => {setFocusUsername(false)}} onChange={(e => setNewUsername(e.target.value))} disabled/><br/>
-        <label>Password <span id='pass-error'>[8-20 characters]</span></label><br/>
+        <label id='pass-error'>8-20 characters!</label>
         <input id='password' type="password" name="password" onFocus={() => {setFocusPwd(true)}} onBlur={() => {setFocusPwd(false)}} onChange={(e => setNewPwd(e.target.value))} disabled/><br/>
-        <label id='confirm'>Confirm Password <span id='mpass-error'>[Must match]</span></label><br/>
-        <input id='password-match' type="password" name="password-match" onFocus={() => {setMatchPwd(true)}} onBlur={() => {setMatchPwd(false)}} onChange={(e => setConfirmPwd(e.target.value))} disabled/><br/>
-        <button id='update' type='button' onClick={pwdCheck}>Update</button>
-        <button id='submit' type='button' onClick={updateUser}>Submit</button>&ensp;
-        <button id='cancel' type='button' onClick={cancelUpdate}>Cancel</button>
+    
+        {!verified ? 
+          <button type='button' onClick={pwdCheck}>Update</button>
+        :<>
+          <label id='mpass-error'>Must match password above!</label>
+          <input id='password-match' type="password" name="password-match" onFocus={() => {setMatchPwd(true)}} onBlur={() => {setMatchPwd(false)}} onChange={(e => setConfirmPwd(e.target.value))} /><br/>
+          <button type='button' onClick={updateUser}>Submit</button>&ensp;
+          <button type='button' onClick={cancelUpdate}>Cancel</button>
+          </>
+        }
       </form>
     </div>
   )

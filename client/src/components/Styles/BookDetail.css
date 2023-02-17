@@ -4,9 +4,17 @@
     margin-top: -20px;
 }
 
+.error-content {
+    width: 60%;
+    display: block;
+    margin: 30px auto;
+    text-align: center;
+}
+
 #loading {
     margin-top: 100px;
     width: 100%;
+    text-align: center;
 }
 
 #loading img {
@@ -64,6 +72,7 @@
     margin-top: 2%;
     margin-right: 2%;
     font-size: xx-large;
+    transition: 0.5s;
 }
 
 .book-content #close:hover {
@@ -86,44 +95,30 @@
     line-height: 150%
 }
 
-#logbtn {
-    padding: 12px;
-    font-size: x-large;
-    border: 2px solid #4A80F0;
+#preview {
+    padding: 10px;
     border-radius: 25px;
+    font-size: larger;
     transition: 0.5s;
     color: #1A1A23;
     background-color: #4A80F0;
 }
 
-#logbtn:hover {
-    border: 2px solid #FDFDFD;
+#preview:hover {
     color: #4A80F0;
     background-color: #FDFDFD;
-    cursor: pointer;
 }
 
-#logbtn i {
-    float: left;
-    font-style: normal
-}
-
-#popup {
-    display: none;
-    width: 80%;
-    margin-right: 200px;
-    text-align: right;
-    color: #1A1A23;
-}
-
-#preview {
-    padding: 10px;
+#logbtn {
+    padding: 5px 9px;
+    border: 0;
     border-radius: 25px;
-    color: #1A1A23;
+    font-size: x-large;
+    transition: 0.5s;
     background-color: #4A80F0;
 }
 
-#preview:hover {
+#logbtn:hover {
     color: #4A80F0;
     background-color: #FDFDFD;
 }
@@ -163,10 +158,6 @@
 
     #logbtn {
         margin-left: 5%;
-    }
-    
-    #book-popup {
-        margin-right: 35%;
     }
 
     #preview {

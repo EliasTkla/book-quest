@@ -1,6 +1,6 @@
 {
-  "homepage": "https://EliasTkla.github.io/bookquest",
-  "name": "booksearch",
+  "homepage": "/",
+  "name": "bookquest",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

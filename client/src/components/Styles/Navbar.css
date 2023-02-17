@@ -110,7 +110,7 @@
     right: 0;
     bottom: 0;
     background-color: rgba(0,0,0,0.5);
-    z-index: 1;
+    z-index: 3;
 }
 
 #hamburger-icon {
@@ -132,7 +132,7 @@
     right: -400px;
     position: absolute;
     top: 78px;
-    z-index: 2;
+    z-index: 4;
     transition: 0.5s;
     border-radius: 0px 0px 0px 25px;
     background-color: #1A1A23;
@@ -149,7 +149,7 @@
     width: 100%;
     display: block;
     list-style: none;
-    font-size: x-large;   
+    font-size: x-large; 
 }
 
 #mobile-links li a {
@@ -160,6 +160,7 @@
     padding-left: 10%;
     border: 8px solid #1A1A23;
     text-decoration: none;
+    text-align: left;
     color: #FDFDFD;
 }
 
@@ -175,6 +176,7 @@
     border-radius: 25px;
     width: 2.15em;
     height: 2.15em;
+    margin: 0;
 }
 
 #mobile-links li:hover #m-user-icon {
@@ -187,7 +189,7 @@
     display: block;
     padding-top: 30px;
     padding-bottom: 30px;
-    padding-left: 16%;
+    padding-left: 15%;
     border: 8px solid #1A1A23;
     color: #FDFDFD;
     font-size: x-large;
