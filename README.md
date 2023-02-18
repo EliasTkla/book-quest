@@ -1,9 +1,8 @@
 # BookQuest
 
 Search for books and keep a digital log through your reading experience.
+
 Link: https://bookq.netlify.app/
-
-
 
 ## Description
 
