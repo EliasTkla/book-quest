@@ -6,7 +6,6 @@ Link: https://bookq.netlify.app/
 
 ## Description
 
-The purpose of this application was to learn how to use react and node js for web developement, and therefore the apps functions are simple. 
 Bookquest allows users to search for books pulled from the google book api and view information on them. 
 In addition, users are able to register for an account and create a personal log with any books available within the library.
 
@@ -28,7 +27,7 @@ Once cloned and npm is installed within the client folder, you can run it with t
 The node js server can be run with 'node server.js' or 'npm start nodemon dev' if nodemon is installed.
 
 Client Folder:
-  % npm install
+  % npm install/n
   % npm install jquery
   % npm start
 
