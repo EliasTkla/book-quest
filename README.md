@@ -27,16 +27,24 @@ Once cloned and npm is installed within the client folder, you can run it with t
 The node js server can be run with 'node server.js' or 'npm start nodemon dev' if nodemon is installed.
 
 Client Folder:
-  % npm install/n
+  % npm install
+  
   % npm install jquery
+  
   % npm start
 
 Server Folder:
+
   % npm install express
+  
   % npm install cors
+  
   % npm install body-parser
+  
   % npm install mysql
+  
   % npm install nodemon
+  
   % node server.js or npm start nodemon dev
   
 ## Authors
