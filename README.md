@@ -45,7 +45,7 @@ Server Folder:
   
     % npm install nodemon
   
-    % node server.js or npm start nodemon dev
+    % node server.js or nodemon --watch
   
 ## Authors
 
