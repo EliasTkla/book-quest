@@ -159,6 +159,7 @@ app.post("/login", async(req, res) => {
     });
 });
 
+/*edits log*/
 app.post("/editlog", (req, res) => {
     const email = req.body.email;
     const bookId = req.body.bookId;
