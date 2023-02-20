@@ -17,14 +17,14 @@ There are 2 folders within this repository each one has instructions on the necc
 
 The client react folder requires the installation of npm and jquery.
 
-The server side requires the installation of express, cors, bodyparser, mysql, and nodemon
+The server side requires the installation of express, cors, bodyparser, mysql, bcryptjs and nodemon
 
 ### Executing program
 
 * How to run the program
 
 Once cloned and npm is installed within the client folder, you can run it with the basic npm start command.
-The node js server can be run with 'node server.js' or 'npm start nodemon dev' if nodemon is installed.
+The node js server can be run with 'node server.js' or 'npm devStart' if nodemon is installed.
 
 Client Folder:
     % npm install
