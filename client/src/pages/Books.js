@@ -48,7 +48,8 @@ function Books() {
     }, 2000);
   }, []);
 
-  const searchBook = () => {
+  const searchBook = (e) => {
+    e.preventDefault();
     if(searchKey !== undefined) {
       setIsLoading(true);
       Axios.get('https://www.googleapis.com/books/v1/volumes?q='+searchKey+'&key=AIzaSyDQ8kCRJpt7BCr2_WoshbW57wBBd_ppMFE&maxResults=40')
@@ -72,8 +73,8 @@ function Books() {
   return (
     <>
     <form id='search-bar'>
-      <input id='search-input' type="text" placeholder="Title, author, genre, or keyword" value={searchKey} onChange={e => setSearchKey(e.target.value)} onKeyDown={event => {if (event.key === 'Enter') {searchBook()}}}/>
-      <button id='search-button' className="fa-solid fa-magnifying-glass" onClick={()=> {searchBook()}}></button>
+      <input id='search-input' type="text" placeholder="Title, author, genre, or keyword" value={searchKey} onChange={e => setSearchKey(e.target.value)} onKeyDown={(e) => {if (e.key === 'Enter') {searchBook(e)}}}/>
+      <button type="button" id='search-button' className="fa-solid fa-magnifying-glass" onClick={()=> {searchBook()}}></button>
     </form>
 
     <div className='book-results'>
