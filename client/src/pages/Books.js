@@ -74,7 +74,7 @@ function Books() {
     <>
     <form id='search-bar'>
       <input id='search-input' type="text" placeholder="Title, author, genre, or keyword" value={searchKey} onChange={e => setSearchKey(e.target.value)} onKeyDown={(e) => {if (e.key === 'Enter') {searchBook(e)}}}/>
-      <button type="button" id='search-button' className="fa-solid fa-magnifying-glass" onClick={()=> {searchBook()}}></button>
+      <button id='search-button' className="fa-solid fa-magnifying-glass" onClick={(e)=> {searchBook(e)}}></button>
     </form>
 
     <div className='book-results'>
