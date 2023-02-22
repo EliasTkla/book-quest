@@ -12,10 +12,11 @@ function Books() {
   const [bookData, setBookData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
-  const searchT = localStorage.getItem("searchKey");
 
   useEffect(() => {
-    if(searchT === undefined || !searchT || searchT === "") {
+    const searchT = localStorage.getItem("searchKey");
+
+    if(searchT === undefined || !searchT) {
       Axios.get("https://www.googleapis.com/books/v1/volumes?q=subject:fiction&filter=ebooks&key=AIzaSyDQ8kCRJpt7BCr2_WoshbW57wBBd_ppMFE&maxResults=40")
       .then(res=> {
         setBookData(res.data.items);
@@ -26,7 +27,6 @@ function Books() {
         setError(true);
       });
     } else {
-      setSearchKey(searchT);
       Axios.get('https://www.googleapis.com/books/v1/volumes?q='+searchT+'&key=AIzaSyDQ8kCRJpt7BCr2_WoshbW57wBBd_ppMFE&maxResults=40')
       .then(res=> {
         setBookData(res.data.items);
@@ -46,7 +46,7 @@ function Books() {
     setTimeout(()=> {
       setIsLoading(false);
     }, 2000);
-  }, [searchT]);
+  }, []);
 
   const searchBook = () => {
     if(searchKey !== undefined) {
