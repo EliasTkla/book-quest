@@ -1,0 +1,30 @@
+#footer {
+    width: 90%;
+    margin-top: 5vh;
+    margin-left: 5%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-radius: 20px 20px 0 0;
+    transition: 0.5s;
+    text-align: center;
+    background-color: #4A80F0;
+}
+
+#footer a {
+    text-decoration: none;
+    color: #160040;
+    font-size: large;
+    font-weight: 400;
+}
+
+#footer a:hover {
+    color: #FDFDFD;
+}
+
+@media (max-width: 900px) {
+    #footer {
+        width: 100%;
+        margin-left: 0;
+        border-radius: 0;
+    }
+}
