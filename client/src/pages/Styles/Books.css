@@ -59,11 +59,15 @@
 
 #loading {
     margin: auto;
-    margin-bottom: 25vh;
+    margin-bottom: 40vh;
 }
 
 #loading img {
     margin-left: 25%;
+}
+
+.error-img {
+    margin-bottom: 30vh;
 }
 
 .book-results {
