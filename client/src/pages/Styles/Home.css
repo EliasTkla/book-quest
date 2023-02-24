@@ -1,7 +1,7 @@
 .home-panel {
     width: 80%;
     margin-left: 10%;
-    margin: 5vh auto;
+    margin: 10vh auto;
     display: grid;
     grid-template-columns: repeat(2, 50%);
     grid-template-areas: 
