@@ -80,7 +80,7 @@ function Signup() {
         <input type="password" name="password" placeholder='Confirm your password' onChange={(e => setConfirmPwd(e.target.value))} /><br/>
         <h5>Already have an account? <Link to='/login'>Login Here</Link></h5>
         <button type='button' onClick={signUser}>Register</button>
-      </form>
+      </form><span id='login-space'>
     </div>
   )
 }
