@@ -18,6 +18,7 @@
 
 #loading {
     margin: auto;
+    padding-bottom: 40vh;
 }
 
 #loading  * {
@@ -31,6 +32,10 @@
 #no-logs {
     margin-bottom: 50px;
     text-align: center;
+}
+
+.error-img {
+    margin-bottom: 30vh;
 }
 
 .log-book {
