@@ -4,8 +4,9 @@
     position: absolute;
     display: flex;
     flex-direction: row;
-    margin-top: -70px;
-    border: 1px solid #1A1A23;
+    margin-top: -75px;
+    border-top: 5px solid #1A1A23;
+    border-bottom: 22px solid #1A1A23;
     padding: 1px;
     z-index: 2;
     left: 0; 
@@ -35,10 +36,6 @@
     cursor: pointer;
 }
 
-#search-bar input:focus {
-    outline: none;
-}
-
 #search-bar button {
     display: none;
     width: 50px;  
@@ -64,6 +61,7 @@
 
 #loading img {
     margin-left: 25%;
+    margin-bottom: 5.5vh;
 }
 
 .error-img {
@@ -100,6 +98,10 @@
 .book:hover {
     transform: scale(0.95);
 } 
+
+.book-results span {
+    margin-bottom: 60px;
+}
 
 @media (max-width: 1600px) {
     .book-results {
