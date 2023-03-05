@@ -42,7 +42,6 @@ function Login() {
 
   return (
     <div className='form-page'>
-      <span id='login-space'></span>
       <form>
         <h1>Welcome Back!</h1>
         <h4 id='form-error'>Enter Info</h4>      
@@ -50,7 +49,7 @@ function Login() {
         <input type="password" name="password" onChange={(e => setPwd(e.target.value))} placeholder="Enter password" required /><br/>
         <h5>Don't have an account? <Link to='/signup'>Sign Up</Link></h5>
         <button type="button" onClick={login}>Login</button>
-      </form><span id='login-space'></span><span id='login-space'></span><span id='login-space'></span>
+      </form><span id='login-space'></span>
     </div>
   )
 }

@@ -6,6 +6,7 @@ import { useAuthUser } from 'react-auth-kit';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import Error from '../assets/images/problem-image.svg';
+import Empty from '../assets/images/empty.svg';
 import './Styles/MyLog.css';
 
 function MyLog() {
@@ -52,7 +53,7 @@ function MyLog() {
   return (
     <div className='mylog-page'>
       { isLoading ? <div id='loading'><h1>Grabbing your books...</h1><img  src={require('../assets/images/loading.gif')} alt='loading gif' /> </div> :
-      <>{booksLogged ? '' : <h2 id='no-logs'>Looks like you don't have any books logged</h2>}
+      <>{booksLogged ? '' : <span id='no-logs'><h2 >Looks like you haven't logged any books.</h2><br/><br/><img  src={Empty} alt='people with empty box' /></span>}
       <span>
         { !error ?
           logData.map((book) => {
@@ -62,10 +63,10 @@ function MyLog() {
               </Link> 
             )
           }) 
-          :<>
-              <h2>Sorry, no books are currently available</h2>
-              <img src={Error} alt='error' className='error-img'/>
-            </>
+          :<span className='error-msg'>
+              <h2>Sorry, no books are currently available.</h2>
+              <img src={Error} alt='error' />
+            </span>
         }
       </span>  
       </>

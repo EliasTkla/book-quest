@@ -96,10 +96,10 @@ function Books() {
                 return null;
               }
             }) 
-            :<>
+            :<span>
               <h2>Sorry, no books are currently available</h2>
               <img src={Error} alt='error' className='error-img'/>
-            </>
+            </span>
           }
         </span>
       }

@@ -18,7 +18,8 @@ form {
     width: 25%;
     height: 50%;
     margin: auto;
-    margin-top: 5vh;
+    margin-top: 8vh;
+    margin-bottom: 20.6vh;
     padding: 30px;
     border-radius: 20px;
     transition: 0.5s;
@@ -94,7 +95,7 @@ form img {
 #login-space {
     display: block;
     width: 100%;
-    padding-bottom: 10.5vh;    
+    padding-bottom: 18.1vh;    
 }
 
 #email-error, #username-error, #pass-error, #mpass-error {
@@ -176,6 +177,18 @@ form #email, #username, #password {
     color: #4A80F0;
     background-color: #FDFDFD;
     cursor: pointer;
+}
+
+.error-content {
+    width: 60%;
+    display: block;
+    margin: 5vh auto;
+    margin-bottom: 21.5vh;
+    text-align: center;
+}
+
+.error-content img {
+    width: 80%;
 }
 
 @media (max-width: 1500px) {
