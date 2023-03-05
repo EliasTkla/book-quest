@@ -6,8 +6,8 @@ import './Styles/Form.css';
 
 function Login() {
 
-  const user_format = /^[a-zA-Z0-9]{3,15}$/;
-  const pwd_format = /^[a-zA-Z0-9]{8,20}$/;
+  const user_format = /^[a-zA-Z0-9._-]{3,15}$/;
+  const pwd_format = /^[a-zA-Z0-9._%+-]{8,20}$/;
 
   const [usern, setUsername] = useState();
   const [pwd, setPwd] = useState();
