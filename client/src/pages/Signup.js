@@ -6,8 +6,8 @@ import './Styles/Form.css';
 function Signup() {
 
   const email_format = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
-  const user_format = /^[a-zA-Z0-9]{3,15}$/;
-  const pwd_format = /^[a-zA-Z0-9]{8,20}$/;
+  const user_format = /^[a-zA-Z0-9._-]{3,15}$/;
+  const pwd_format = /^[a-zA-Z0-9._%+-]{8,20}$/;
 
   const navigate = useNavigate();
 
