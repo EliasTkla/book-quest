@@ -48,22 +48,19 @@ export default function MyLog() {
   const loadBooks = () => {
     let array = [];
 
-    for(let i = 0; i < booksId.length; i++){
-      booksId.map((id) => {
-        Axios.get('https://www.googleapis.com/books/v1/volumes?q='+id+'&maxResults=40')
-        .then(res=> {
-          array.push(res.data.items[0]);
-          setError(false);
-        })
-        .catch(err=> {
-          console.log(err);
-          setError(true);
-        });
-
-        return null;
+    booksId.map((id) => {
+      Axios.get('https://www.googleapis.com/books/v1/volumes?q='+id+'&maxResults=40')
+      .then(res=> {
+        array.push(res.data.items[0]);
+        setError(false);
       })
-      
-    }
+      .catch(err=> {
+        console.log(err);
+        setError(true);
+      });
+
+      return null;
+    })
 
     setBooksData(array);
   }
@@ -74,15 +71,13 @@ export default function MyLog() {
 
       let array = [];
 
-      for(let i = 0; i < booksData.length; i++){
-        booksData.map((book) => {
-          if(book.volumeInfo.title === search){
-            array.push(book);
-          }
+      booksData.map((book) => {
+        if(book.volumeInfo.title === search){
+          array.push(book);
+        }
 
-          return null;
-        })
-      }
+        return null;
+      })
 
       setBooksData(array);
 

@@ -8,7 +8,13 @@ require('dotenv').config();
 
 const jwt = require('jsonwebtoken');
 
-app.use(cors());
+app.use(
+    cors({
+        origin: "https://bookq.netlify.app",
+        methods: ["GET", "PUT", "POST", "DELETE"],
+    })
+);
+
 app.use(express.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json())
