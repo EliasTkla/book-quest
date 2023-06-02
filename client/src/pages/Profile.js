@@ -61,22 +61,22 @@ export default function Profile() {
 
   useEffect(() => {
     if ((!focusUsername || focusUsername) && newUsername !== "" && newUsername !== null && !user_format.test(newUsername)){
-      document.getElementById("username-error").style.color = "red";
+      document.getElementById('username-error').style.color = "red";
     } else {
-      document.getElementById("username-error").style.color = "#1a1a23";
+      document.getElementById('username-error').style.color = "#1a1a23";
     }
 
     if ((!focusPwd || focusPwd) && newPwd !== "" && newPwd !== null && !pwd_format.test(newPwd)){
-      document.getElementById("pass-error").style.color = "red";
+      document.getElementById('pass-error').style.color = "red";
     } else {
-      document.getElementById("pass-error").style.color = "#1a1a23";
+      document.getElementById('pass-error').style.color = "#1a1a23";
     } 
 
     if(verified){
       if (pwd_format.test(newPwd) && ((matchPwd || !matchPwd) && matchPwd !== "" && matchPwd !== null && confirmPwd !== newPwd)){
-        document.getElementById("mpass-error").style.color = "red";
+        document.getElementById('mpass-error').style.color = "red";
       } else{
-        document.getElementById("mpass-error").style.color = "#1a1a23";
+        document.getElementById('mpass-error').style.color = "#1a1a23";
       }
     }
   });
@@ -91,10 +91,10 @@ export default function Profile() {
           newPwd: newPwd,
         }).then((response) => {
           if(response.data.message){
-            document.getElementById("form-error").style.color = "red";
+            document.getElementById('form-error').style.color = "red";
             setUpdateStatus(response.data.message);
           } else {
-            document.getElementById("form-error").innerHTML = "Successfully updated!";
+            document.getElementById('form-error').innerHTML = "Successfully updated!";
             cancelUpdate();
           }
         })
@@ -107,13 +107,13 @@ export default function Profile() {
         setError(true);
       } 
     } else {
-      document.getElementById("form-error").style.color = "red";
+      document.getElementById('form-error').style.color = "red";
       setUpdateStatus('Please fill in the form to update profile!');
     }
   }
 
   const pwdCheck = () => {
-    document.getElementById("v-overlay").style.display = "block";
+    document.getElementById('v-overlay').style.display = "block";
   }
   
   const verifyUser = () => {
@@ -126,8 +126,8 @@ export default function Profile() {
         setVerified(true);
         enableInputs();
       } else {
-        document.getElementById("verify-error").style.color = "red";
-        document.getElementById("verify-error").innerHTML = response.data.message2;
+        document.getElementById('verify-error').style.color = "red";
+        document.getElementById('verify-error').innerHTML = response.data.message2;
       }
     })
     .catch(err=> {
@@ -137,26 +137,26 @@ export default function Profile() {
   }
 
   const cancelVerify = () => {
-    document.getElementById("verify-error").style.color = "#1A1A23";
-    document.getElementById("v-overlay").style.display = "none";
-    document.getElementById("v-password").value = "";
+    document.getElementById('verify-error').style.color = "#1A1A23";
+    document.getElementById('v-overlay').style.display = "none";
+    document.getElementById('v-password').value = "";
   }
 
   const enableInputs = () => {
-    document.getElementById("username").disabled = false;
-    document.getElementById("password").disabled = false;
-    document.getElementById("username").style.backgroundColor = "#FDFDFD";
-    document.getElementById("password").style.backgroundColor = "#FDFDFD";
+    document.getElementById('username').disabled = false;
+    document.getElementById('password').disabled = false;
+    document.getElementById('username').style.backgroundColor = "#FDFDFD";
+    document.getElementById('password').style.backgroundColor = "#FDFDFD";
   }
 
   const cancelUpdate = () => {
-    document.getElementById("form-error").style.color = "#FDFDFD";
-    document.getElementById("form-error").innerHTML = "_";
-    document.getElementById("username").disabled = true;
-    document.getElementById("password").disabled = true;
-    document.getElementById("username").style.backgroundColor = "lightgray";
-    document.getElementById("password").style.backgroundColor = "lightgray";
-    document.getElementById("password-match").value = "";
+    document.getElementById('form-error').style.color = "#FDFDFD";
+    document.getElementById('form-error').innerHTML = "_";
+    document.getElementById('username').disabled = true;
+    document.getElementById('password').disabled = true;
+    document.getElementById('username').style.backgroundColor = "lightgray";
+    document.getElementById('password').style.backgroundColor = "lightgray";
+    document.getElementById('password-match').value = "";
     setVerified(false);
   }
 
