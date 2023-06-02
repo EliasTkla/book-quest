@@ -1,12 +1,18 @@
 .form-page {
-    margin-left: auto;
-    margin-right: auto;
+    margin: 15vh auto;
+}
+
+.form-page img {
+    width: 40%;
+    margin-left: 10%;
+    margin-top: -5vh;
+    float: left;
 }
 
 .form-page h1, h4, h5 {
     margin-top: 5px;
     text-align: center;
-    color: #FDFDFD;
+    color: #1D222C;
 }
 
 #form-error {
@@ -17,20 +23,18 @@
 form {
     width: 25%;
     height: 50%;
-    margin: auto;
-    margin-top: 8vh;
-    margin-bottom: 20.6vh;
+    margin-left: 5%;
+    float: left;
+    margin-top: -2vh;
     padding: 30px;
-    border-radius: 20px;
     transition: 0.5s;
-    background-color: #1A1A23;
 }
 
 form label {
     width: 90%;
     display: block;
     margin: auto;
-    color: #FDFDFD;
+    color: #1D222C;
 }
 
 form input {
@@ -38,11 +42,12 @@ form input {
     display: block;
     margin: auto;
     margin-top: 8px;
-    padding: 10px;
+    padding: 15px;
     border: 0;
-    border-radius: 15px;
+    border-radius: 5px;
     font-size: large;
     cursor: pointer;
+    background-color: #F1EEE3;
 }
 
 form input:focus {
@@ -51,33 +56,34 @@ form input:focus {
 
 form h5 {
     text-align: center;
+    color: #1D222C;
 }
 
 form h5 a {
     text-decoration: none;
-    color: #4A80F0;
+    color: #E36166;
 }
 
 form h5 a:hover {
-    color: #FDFDFD;
+    color: #1D222C;
 }
 
 form button {
     display: block;
-    width: 50%;
+    width: 40%;
     margin: auto;
     margin-top: 10px;
-    padding: 10px;
+    padding: 15px;
     border: 0;
-    border-radius: 15px;
+    border-radius: 35px;
     font-size: large;
-    color: #1A1A23;
-    background-color: #4A80F0;
+    color: #FDFCF7;
+    background-color: #1D222C;
+    transition: 0.2s;
 }
 
 form button:hover {
-    color: #4A80F0;
-    background-color: #FDFDFD;
+    background-color: #E36166;
     cursor: pointer;
 }
 
@@ -95,7 +101,7 @@ form img {
 #login-space {
     display: block;
     width: 100%;
-    padding-bottom: 18.1vh;    
+    padding-bottom: 10vh;    
 }
 
 #email-error, #username-error, #pass-error, #mpass-error {
@@ -201,9 +207,16 @@ form #email, #username, #password {
     }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1024px) {
     form {
-        width: 60%;
+        width: 50%;
+        margin: auto;
+        display: block;
+        float: none;
+    }
+
+    .form-page img {
+        display: none;
     }
 }
 
@@ -237,14 +250,6 @@ form #email, #username, #password {
 }
 
 @media (max-width: 420px) {
-    .form-page {
-        background-color: #1A1A23;
-    }
-
-    form {
-        margin-bottom: 40vh;
-    }
-
     .v-overlay-inner {
         width: 90%;
     }

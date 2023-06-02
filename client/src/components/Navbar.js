@@ -3,10 +3,9 @@ import { Link } from 'react-router-dom';
 import { useSignOut } from 'react-auth-kit';
 import { useNavigate } from 'react-router-dom';
 import { useIsAuthenticated } from 'react-auth-kit';
-import $ from 'jquery';
 import './Styles/Navbar.css';
 
-function Navbar() {
+export default function Navbar() {
     
     const isAuthenticated = useIsAuthenticated();
     const signOut = useSignOut();
@@ -30,19 +29,6 @@ function Navbar() {
     }, [isAuthenticated]);
 
     useEffect(()=> {
-        if(window.location.pathname === "/books") {
-            setTimeout(()=> {
-                document.getElementById("navbar").style.paddingBottom = "90px";
-                $("#search-bar").fadeIn(1000);
-            }, 50);
-            
-        } else {
-            setTimeout(()=> {
-                document.getElementById("navbar").style.paddingBottom = "0px";
-                $("#search-bar").fadeOut(50);
-            }, 50);
-        }
-
         window.addEventListener('resize', windowWidth);
 
         setTimeout(()=> {
@@ -87,14 +73,15 @@ function Navbar() {
         <>
         <nav id='navbar'>
             <Link to='/' className='logo'>
-                <i className="fa-solid fa-book-open"></i> BookQuest
+                <img src={require('../assets/images/logo.png')} alt='bookquest logo'/> 
+                <h3>BookQuest</h3>
             </Link>
-                
+
             <div className='navbar-links'>
                 <ul>
                     <li>
                         <Link className='navbutton' to='/books'>
-                            Books
+                            Explore
                         </Link>
                     </li>
                     {loggedIn && (
@@ -105,18 +92,11 @@ function Navbar() {
                         </li>
                      )}
                     {!loggedIn && (
-                        <>
-                            <li>
-                                <Link className='navbutton' to='/login'>
-                                    Login
-                                </Link>
-                            </li>
-                            <li>
-                                <Link className='navbutton' to='/signup' id='signup-button'>
-                                    Sign up
-                                </Link>
-                            </li>
-                        </>
+                        <li>
+                            <Link className='navbutton' to='/signup' id='signup-button'>
+                                Sign up
+                            </Link>
+                        </li>
                     )}
                     {loggedIn && (
                         <>
@@ -189,5 +169,3 @@ function Navbar() {
         </>
     )
 }
-
-export default Navbar

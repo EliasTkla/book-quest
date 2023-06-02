@@ -1,44 +1,20 @@
 .book-page {
     width: 90%;
-    margin: auto;
-    margin-top: -20px;
+    margin: 100px auto;
 }
 
-.error-content {
-    width: 60%;
-    display: block;
-    margin: 5vh auto;
-    margin-bottom: 21.5vh;
-    text-align: center;
+.error-container h2 {
+    margin-top: 5vh;
+    font-weight: lighter;
 }
 
-.error-content img {
-    width: 80%;
-}
-
-#loading {
-    margin-top: 100px;
-    width: 100%;
-    text-align: center;
-}
-
-#loading img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 200px;
+.error-container img {
+    width: 40%;
 }
 
 .book-content {
-    width: 80%;
+    width: 90%;
     margin: auto;
-    margin-top: 50px;
-    padding-bottom: 5%;
-    border-radius: 25px;
-    transition: 0.5s;
-    overflow: auto;
-    color: #FDFDFD;
-    background-color: #1A1A23;
 }
 
 .placeholder:after {
@@ -56,43 +32,71 @@
 }
 
 .book-content img {
+    width: 400px;
+    height: 600px;
+    margin: 3%;
     float: left;
-    margin-top: 5%;
-    margin-left: 5%;
-    margin-right: 3%;
-    margin-bottom: 2%;
-    width: 40%;
-    border-radius: 5px;
-    transition: 0.5s;
 }
 
 .book-content a {
     text-decoration: none;
-    color: #4A80F0;
+    color: #E36166;
     font-size: x-large;
 }
 
-.book-content #close {
+#close {
+    width: fit-content;
+    display: block;
     float: right;
-    margin-top: 2%;
-    margin-right: 2%;
-    font-size: xx-large;
-    transition: 0.5s;
+    margin-right: 8%;
 }
 
-.book-content #close:hover {
-    color: #FDFDFD;
+#close img {
+    width: 30px;
+    height: 30px;
+    padding: 6px;
+    padding-left: 7px;
+    padding-right: 7px;
+    margin: 3px;
+    border-radius: 35px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+    
+#close img:hover {
+    background-color: #F1EEE3;
 }
 
 .book-content h1 {
-    padding-top: 5%;
+    padding-top: 15vh;
 }
 
-.book-content h4 {
-    text-align: left;
+.book-content h3 {
+    font-weight: lighter;
+    color: #1D222C
 }
 
-.book-content h1, h3, h4, p {
+#preview {
+    padding-left: 25px;
+    font-size: larger;
+    transition: 0.2s;
+    color: #E36166;
+    background: transparent url("../../assets/images/link-2.svg") no-repeat 0px;
+}
+
+#preview:hover {
+    color: #1D222C;
+    background: transparent url("../../assets/images/link.svg") no-repeat 0px;
+}
+
+.detail-container {
+    width: 60%;
+    margin-left: 20%;
+    padding: 25px 100px 100px 100px;
+    background-color: #F1EEE3;
+}
+
+.detail-container h4, p {
     margin-right: 5%;
     margin-left: 5%;
     text-align: justify;
@@ -100,32 +104,19 @@
     line-height: 150%
 }
 
-#preview {
-    padding: 10px;
-    border-radius: 25px;
-    font-size: larger;
-    transition: 0.5s;
-    color: #1A1A23;
-    background-color: #4A80F0;
-}
-
-#preview:hover {
-    color: #4A80F0;
-    background-color: #FDFDFD;
-}
-
 #logbtn {
-    padding: 5px 9px;
-    border: 0;
+    padding: 10px;
+    border: none;
     border-radius: 25px;
-    font-size: x-large;
+    font-size: large;
     transition: 0;
-    color: #1A1A23;
-    background-color: #4A80F0;
+    color: #F1EEE3;
+    background-color: #1D222C;
+    cursor: pointer;
 }
 
 #logbtn:hover {
-    background-color: #FDFDFD;
+    background-color: #E36166;
 }
 
 @media (max-width: 1280px) {
@@ -143,29 +134,57 @@
         float: left;
         margin: 5%;
         width: 50%;
-        border-radius: 25px;
+    }
+
+    .detail-container {
+        width: 70%;
+        margin-left: 10%;
+        padding: 50px;
     }
 }
 
 @media (max-width: 600px) {
-    .book-content #close {
-        float: right;
-        margin-top: 2%;
-        margin-right: 5%;
+    .book-content {
+        width: 85%;
     }
 
     .book-content img {
         float: left;
         margin: 5%;
         width: 90%;
-        border-radius: 25px;
+    }
+
+    .detail-container {
+        width: 100%;
+        margin-left: -3%;
+        padding: 10px;
+        padding-top: 25px;
     }
 
     #logbtn {
-        margin-left: 5%;
+        margin-left: 20px;
+    }
+}
+
+@media (max-width: 390px) {
+    .book-content img {
+        width: 110%;
+        margin-left: -5%;
+        padding: 0;
     }
 
-    #preview {
-        margin-left: 5%;
+    .detail-container {
+        width: 110%;
+        margin-left: -6%;
+        padding: 5px;
+        padding-top: 25px;
+    }
+
+    .detail-container p {
+        font-size: medium;
+    }
+
+    #logbtn {
+        margin-left: 10px;
     }
 }

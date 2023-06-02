@@ -2,9 +2,10 @@ import React, { useState} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Axios from 'axios';
 import { useSignIn } from 'react-auth-kit';
+import Reading from '../assets/images/reading-2.svg';
 import './Styles/Form.css';
 
-function Login() {
+export default function Login() {
 
   const user_format = /^[a-zA-Z0-9._-]{3,15}$/;
   const pwd_format = /^[a-zA-Z0-9._%+-]{8,20}$/;
@@ -14,7 +15,9 @@ function Login() {
   const signIn = useSignIn();
   const navigate = useNavigate();
   
-  const login = () => {
+  const login = (e) => {
+    e.preventDefault();
+
     if(user_format.test(usern) && pwd_format.test(pwd)){
       Axios.post('https://bookquest.herokuapp.com/login', {
         usern: usern,
@@ -42,16 +45,18 @@ function Login() {
 
   return (
     <div className='form-page'>
+      <img src={Reading} alt='women reading book outside'/>
       <form>
         <h1>Welcome Back!</h1>
+        <hr/>
         <h4 id='form-error'>Enter Info</h4>      
+        <label>Username</label>
         <input type="text" name="username" onChange={(e => setUsername(e.target.value))} placeholder="Enter username" required /><br/><br/>
+        <label>Password</label>
         <input type="password" name="password" onChange={(e => setPwd(e.target.value))} placeholder="Enter password" required /><br/>
         <h5>Don't have an account? <Link to='/signup'>Sign Up</Link></h5>
-        <button type="button" onClick={login}>Login</button>
-      </form><span id='login-space'></span>
+        <button type="button" onClick={(e) => {login(e);}}>Login</button>
+      </form>
     </div>
   )
 }
-
-export default Login

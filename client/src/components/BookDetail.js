@@ -5,30 +5,25 @@ import { Link } from 'react-router-dom';
 import { useIsAuthenticated } from 'react-auth-kit';
 import { useAuthUser } from 'react-auth-kit';
 import { useLocation } from 'react-router-dom';
-import Error from '../assets/images/problem-image.svg';
+import Error from '../assets/images/bug.svg';
+import LeftArrow from '../assets/images/arrow-left-solid.svg';
 import './Styles/BookDetail.css';
 
-function Books() {
+export default function Books() {
 
   const isAuthenticated = useIsAuthenticated();
   const authUser = useAuthUser();
-  const [bookData, setBookData] = useState([]);
   const [logStatus, setLogStatus] = useState();
-  const [isLoading, setIsLoading] = useState(true);
-  const [imgLoaded, setImgLoaded] = useState(false);
   const [error, setError] = useState(false);
   const location = useLocation();
   const pageCall = location.state.page;
   const bookId = location.state.id;
+  const bookTitle = location.state.title;
+  const bookAuthor = location.state.author;
+  const previewLink = location.state.preview;
+  const summary = location.state.description;
 
   useEffect(() => {
-    Axios.get("https://www.googleapis.com/books/v1/volumes/"+bookId)
-    .then(res=> setBookData(res.data))
-    .catch(err=> {
-      console.log(err);
-      setError(true);
-    });
-
     if(isAuthenticated()) {
       const email = authUser().email;
 
@@ -50,10 +45,6 @@ function Books() {
     } else {
       setLogStatus(false);
     }
-    
-    setTimeout(()=> {
-      setIsLoading(false);
-    }, 2000);
   }, [authUser, isAuthenticated, bookId]);
 
   useEffect(() => {
@@ -65,7 +56,7 @@ function Books() {
 
     setTimeout(()=> {
       $("#popup").fadeIn(1000);   
-      $("#popup").fadeOut(1000);
+      $("#popup").fadeOut(1500);
     },50) 
   }
 
@@ -95,50 +86,37 @@ function Books() {
           setError(true);
         });
       } else {
-        togglePopup('&ensp;Login to log book');
+        togglePopup('&ensp; Login to save books');
       }
     } else {
-      togglePopup('&ensp; Not able to edit log');
+      togglePopup('&ensp; Unable to remove saved book ');
     }
-  }
-
-  function handleImageLoaded() {
-    setImgLoaded(true);
   }
 
   return (
     <div className='book-page'>
-      { isLoading ? <div id='loading'><h1>Grabbing book details...</h1><br/><img  src={require('../assets/images/loading.gif')} alt='loading gif' /> </div> : 
-        <>
-          { !error ?
-              <div key={bookData.id} className="book-content">
-                  { !imgLoaded &&
-                    <div className='placeholder'></div>
-                  }
-                  
-                  <img src={"https://books.google.com/books/publisher/content/images/frontcover/"+bookData.id+"?fife=w800-h1000&source=gbs_api"} alt='Book cover' onLoad={()=> {handleImageLoaded()}}/>
-                  <Link to={pageCall}><i id='close' className="fa-regular fa-circle-left"></i></Link>
-
-                  <h1>{bookData.volumeInfo.title} </h1><br/>
-                  <h3>Author: {bookData.volumeInfo.authors}</h3><br/>
-
-                  <Link id='preview' to={bookData.volumeInfo.previewLink} target="_blank">Preview</Link><br/><br/><br/>
-                  <button id='logbtn' onClick={()=> {editLog()}}>{logStatus ? <i className="fa-solid fa-check"></i>: <i className="fa-solid fa-plus"></i>}<span id='popup'></span></button>
-                  
-                  <h4>Summary:</h4><br/>
-                  <p>
-                    {bookData.volumeInfo.description}
-                  </p>  
-              </div> 
-            :<span className='error-content'>
-              <h2>Sorry, something went wrong on our end.</h2>
-              <img src={Error} alt='error' />
+        { !error ?
+            <div className="book-content">
+              <img src={"https://books.google.com/books/publisher/content/images/frontcover/"+bookId+"?fife=w800-h1000&source=gbs_api"} alt='Book cover' />
+          
+              <Link id='close' to={pageCall}><img src={LeftArrow} alt='left arrow button' /></Link>
+              <h1>{bookTitle} </h1>
+              <h3>By {bookAuthor}</h3>
+              <Link id='preview' to={previewLink} target="_blank">Preview</Link><br/><br/>
+              
+              <div className='detail-container'>
+                <button id='logbtn' onClick={()=> {editLog()}}>{logStatus ? <i>Saved</i>: <i>Save Book</i>}</button><span id='popup'></span><br/>
+                <br/>
+                <h4>Summary:</h4>
+                <p>{summary}</p>  
+              </div>
+            </div> 
+          :
+            <span className='error-container'>
+              <h2>Something went wrong, please refresh the page</h2>
+              <img src={Error} alt='error'/>
             </span>
-          } 
-        </>
-      }
+        } 
     </div>     
   )
 }
-
-export default Books

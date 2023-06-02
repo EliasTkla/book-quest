@@ -1,6 +1,6 @@
 .mylog-page {
-    width: 1100px;
-    margin: 10px auto;
+    width: 90%;
+    margin: 20vh auto;
     display: grid;
     grid-template-columns: repeat(auto, 210px);
     grid-auto-flow: column;

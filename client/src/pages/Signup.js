@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Axios from 'axios';
+import Reading from '../assets/images/reading.svg';
 import './Styles/Form.css';
 
-function Signup() {
+export default function Signup() {
 
   const email_format = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
   const user_format = /^[a-zA-Z0-9._-]{3,15}$/;
@@ -17,7 +18,9 @@ function Signup() {
   const [confirmPwd, setConfirmPwd] = useState();
   const [signupStatus, setSignupStatus] = useState("Begin your log!");
 
-  const signUser = () => {
+  const signUser = (e) => {
+    e.preventDefault();
+
     if(email_format.test(email) && user_format.test(usern) && pwd_format.test(pwd) && confirmPwd === pwd){
       Axios.post('https://bookquest.herokuapp.com/register', {
         email: email,
@@ -67,8 +70,10 @@ function Signup() {
 
   return (
     <div className='form-page'>
+      <img src={Reading} alt=""/>
       <form>
         <h1>Welcome to BookQuest</h1>
+        <hr/>
         <h4 id='form-error'>{signupStatus}</h4>
         <label>Email <span id='email-error'>[Invalid]</span></label>
         <input type="text" name="email" placeholder='Enter your email' onChange={(e => setEmail(e.target.value))} /><br/>
@@ -79,10 +84,8 @@ function Signup() {
         <label>Confirm Password <span id='mpass-error'>[Must match]</span></label>
         <input type="password" name="password" placeholder='Confirm your password' onChange={(e => setConfirmPwd(e.target.value))} /><br/>
         <h5>Already have an account? <Link to='/login'>Login Here</Link></h5>
-        <button type='button' onClick={signUser}>Register</button>
+        <button type='button' onClick={(e) => {signUser(e);}}>Register</button>
       </form>
     </div>
   )
 }
-
-export default Signup

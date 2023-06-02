@@ -3,10 +3,10 @@ import Axios from 'axios';
 import { useIsAuthenticated } from 'react-auth-kit';
 import { useNavigate } from 'react-router-dom';
 import { useAuthUser } from 'react-auth-kit';
-import Error from '../assets/images/problem-image.svg';
+import Error from '../assets/images/bug.svg';
 import './Styles/Form.css';
 
-function Profile() {
+export default function Profile() {
 
   const isAuthenticated = useIsAuthenticated();
   const authUser = useAuthUser();
@@ -202,5 +202,3 @@ function Profile() {
     </div>
   )
 }
-
-export default Profile

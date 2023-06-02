@@ -1,23 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import Axios from 'axios';
 import { useIsAuthenticated } from 'react-auth-kit';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useAuthUser } from 'react-auth-kit';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-import 'react-lazy-load-image-component/src/effects/blur.css';
-import Error from '../assets/images/problem-image.svg';
-import Empty from '../assets/images/empty.svg';
+import Error from '../assets/images/bug.svg';
+import BookCard  from '../components/BookCard.js';
+import Placeholder from '../components/Placeholder.js';
 import './Styles/MyLog.css';
 
-function MyLog() {
+export default function MyLog() {
 
   const isAuthenticated = useIsAuthenticated();
   const authUser = useAuthUser();
   const navigate = useNavigate();  
-  const [logData, setLogData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [booksId, setBooksId] = useState([]);
+  const [booksData, setBooksData] = useState([]);
   const [booksLogged, setBooksLogged] = useState();
+  const [searchKey, setSearchKey] = useState('');
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+
 
   useEffect(() => {
     if(isAuthenticated()){
@@ -27,17 +29,9 @@ function MyLog() {
       }).then((response) => {
         if(response.data.message){
           setBooksLogged(false);
-          
-          setTimeout(()=> {
-            setIsLoading(false);
-          }, 1000);
         } else { 
           setBooksLogged(true);
-          setLogData(response.data.map(log => { return log.book_id; }));
-
-          setTimeout(()=> {
-            setIsLoading(false);
-          }, 2000);
+          setBooksId(response.data.map(log => { return log.book_id; }));
         }
         setError(false);
       })
@@ -50,29 +44,99 @@ function MyLog() {
     }
   }, [authUser, isAuthenticated, navigate]);
 
+  useEffect(() => {
+    let array = [];
+
+    for(let i = 0; i < booksId.length; i++){
+      Axios.get('https://www.googleapis.com/books/v1/volumes?q='+booksId.get(i)+'&maxResults=40')
+      .then(res=> {
+        array.push(res.data.items[0]);
+        setError(false);
+      })
+      .catch(err=> {
+        console.log(err);
+        setError(true);
+      });
+    }
+
+    setBooksData(array);
+    
+  }, [booksId]);
+
+  function searchBook (search) {
+    if(search !== ""){
+      setLoading(true);
+
+      let array = [];
+
+      for(let i = 0; i < booksData.length; i++){
+        if(booksData.get(i).volumeInfo.title === search){
+          array.push(booksData.get(i));
+        }
+      }
+
+      setBooksData(array);
+
+      setTimeout(()=> setLoading(false), 3000);
+    }
+  }
+
   return (
     <div className='mylog-page'>
-      { isLoading ? <div id='loading'><h1>Grabbing your books...</h1><img  src={require('../assets/images/loading.gif')} alt='loading gif' /> </div> :
-      <>{booksLogged ? '' : <span id='no-logs'><h2 >Looks like you haven't logged any books.</h2><br/><br/><img  src={Empty} alt='people with empty box' /></span>}
+      <input className='search-input' type="search" placeholder="Search title, author, genre ..." value={searchKey} onChange={e => setSearchKey(e.target.value)} onKeyDown={(e) => {if (e.key === 'Enter') {searchBook(searchKey)}}}/>
+      
+      {booksLogged ? '' : <span id='no-logs'><h2 >You haven't logged any books, head to the Explore page to start</h2></span>}
       <span>
-        { !error ?
-          logData.map((book) => {
-            return (
-              <Link key={book} to='/bookdetail' state={{id: book, page: '/mylog'}}>
-                <LazyLoadImage className='log-book' src={"https://books.google.com/books/publisher/content/images/frontcover/"+book+"?fife=w400-h600&source=gbs_api"}  effect='blur'/>
-              </Link> 
-            )
-          }) 
-          :<span className='error-msg'>
-              <h2>Sorry, no books are currently available.</h2>
-              <img src={Error} alt='error' />
-            </span>
-        }
+      { !error ?
+            <div className='search-results'>
+              { loading ? (
+                  <>
+                    <Placeholder/>
+                    <Placeholder/>
+                    <Placeholder/>
+                    <Placeholder/>
+                    <Placeholder/>
+                    <Placeholder/>
+                    <Placeholder/>
+                    <Placeholder/>
+                    <Placeholder/>
+                    <Placeholder/>
+                    <Placeholder/>
+                    <Placeholder/>
+                    <Placeholder/>
+                    <Placeholder/>
+                    <Placeholder/>
+                    <Placeholder/>
+                    <Placeholder/>
+                    <Placeholder/>
+                    <Placeholder/>
+                    <Placeholder/>
+                    <Placeholder/>
+                    <Placeholder/>
+                  </>
+                ) : (
+                  booksData.map((book) => {
+                    let cover =  book.volumeInfo.imageLinks && book.volumeInfo.imageLinks.thumbnail;
+
+                    if(cover !== undefined){
+                      return (
+                        <span key={book.id}>
+                          <BookCard bookData={book}/> 
+                        </span> 
+                      )
+                    } else {
+                      return null;
+                    }
+                  }) 
+              )}
+            </div>
+        :
+          <span className='error-container'>
+            <h2>Something went wrong, please refresh the page</h2>
+            <img src={Error} alt='error'/>
+          </span>
+      }    
       </span>  
-      </>
-      }
     </div>
   )
 }
-
-export default MyLog
