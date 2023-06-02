@@ -33,6 +33,7 @@ export default function MyLog() {
           setBooksLogged(true);
           setBooksId(response.data.map(log => { return log.book_id; }));
         }
+
         setError(false);
       })
       .catch(err=> {
@@ -44,24 +45,28 @@ export default function MyLog() {
     }
   }, [authUser, isAuthenticated, navigate]);
 
-  useEffect(() => {
+  const loadBooks = () => {
     let array = [];
 
     for(let i = 0; i < booksId.length; i++){
-      Axios.get('https://www.googleapis.com/books/v1/volumes?q='+booksId.get(i)+'&maxResults=40')
-      .then(res=> {
-        array.push(res.data.items[0]);
-        setError(false);
+      booksId.map((id) => {
+        Axios.get('https://www.googleapis.com/books/v1/volumes?q='+id+'&maxResults=40')
+        .then(res=> {
+          array.push(res.data.items[0]);
+          setError(false);
+        })
+        .catch(err=> {
+          console.log(err);
+          setError(true);
+        });
+
+        return null;
       })
-      .catch(err=> {
-        console.log(err);
-        setError(true);
-      });
+      
     }
 
     setBooksData(array);
-    
-  }, [booksId]);
+  }
 
   function searchBook (search) {
     if(search !== ""){
@@ -70,9 +75,13 @@ export default function MyLog() {
       let array = [];
 
       for(let i = 0; i < booksData.length; i++){
-        if(booksData.get(i).volumeInfo.title === search){
-          array.push(booksData.get(i));
-        }
+        booksData.map((book) => {
+          if(book.volumeInfo.title === search){
+            array.push(book);
+          }
+
+          return null;
+        })
       }
 
       setBooksData(array);
@@ -85,7 +94,7 @@ export default function MyLog() {
     <div className='mylog-page'>
       <input className='search-input' type="search" placeholder="Search title, author, genre ..." value={searchKey} onChange={e => setSearchKey(e.target.value)} onKeyDown={(e) => {if (e.key === 'Enter') {searchBook(searchKey)}}}/>
       
-      {booksLogged ? '' : <span id='no-logs'><h2 >You haven't logged any books, head to the Explore page to start</h2></span>}
+      {booksLogged ? loadBooks() : <span id='no-logs'><h2 >You haven't logged any books, head to the Explore page to start</h2></span>}
       <span>
       { !error ?
             <div className='search-results'>
