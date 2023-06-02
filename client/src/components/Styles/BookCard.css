@@ -31,26 +31,6 @@
     -webkit-box-orient: vertical;
 }
 
-.img-skeleton {
-    width: 200px;
-    height: 300px;
-    border-radius: 0px;
-    transition: 0.5s;
-    -webkit-box-shadow: -15px 17px 10px -7px rgba(0,0,0,0.54);
-    -moz-box-shadow: -15px 17px 10px -7px rgba(0,0,0,0.54);
-    box-shadow: -15px 17px 10px -7px rgba(0,0,0,0.54);
-}
-
-.skeleton {
-    animation: skeleton-loading 1s linear infinite alternate;
-}
-
-.text-skeleton {
-    width: 90%;
-    height: 25px;
-    border-radius: 5px;
-}
-
 @keyframes skeleton-loading {
     0% {
         background-color: hsl(200, 20%, 85%);

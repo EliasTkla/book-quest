@@ -124,7 +124,7 @@ export default function Navbar() {
                 <ul>
                     <li>
                         <Link to='/books' onClick={()=> {toggleMobileMenu()}}>
-                            Books
+                            Explore
                         </Link>
                     </li>
                     {loggedIn && (

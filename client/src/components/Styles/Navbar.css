@@ -100,8 +100,8 @@
 }
 
 #user-icon:hover {
-    border: 2px solid #4A80F0;
-    background-color: #4A80F0;
+    border: 2px solid #E36166;
+    background-color: #E36166;
 }
 
 .logoutbtn i {
@@ -112,7 +112,7 @@
 }
 
 .logoutbtn i:hover {
-    color: #4A80F0;
+    color: #E36166;
 }
 
 #m-overlay {
@@ -137,20 +137,19 @@
 }
 
 #hamburger-icon:hover {
-    color: #4A80F0;
+    color: #E36166;
 }
 
 #mobile-links {
     display: none;
     width: 70%;
-    height: 600px;
+    height: 100%;
     right: -400px;
     position: absolute;
     top: 77px;
     z-index: 4;
     transition: 0.5s;
-    border-radius: 0px 0px 0px 25px;
-    background-color: #1A1A23;
+    background-color: #FDFCF7;
 }
 
 #mobile-links ul {
@@ -173,21 +172,21 @@
     padding-top: 30px;
     padding-bottom: 30px;
     padding-left: 10%;
-    border: 8px solid #1A1A23;
+    border: 8px solid #FDFCF7;
     text-decoration: none;
     text-align: left;
-    color: #FDFDFD;
+    color: #1D222C;
 }
 
 #mobile-links a:hover {
-    color: #4A80F0;
-    border-left: 8px solid #4A80F0; 
+    color: #FDFCF7;
+    border-left: 8px solid #E36166; 
 }
 
 #mobile-links li #m-user-icon {
     vertical-align: middle;
-    border: 2px solid #FDFDFD;
-    background-color: #FDFDFD;
+    border: 2px solid #FDFCF7;
+    background-color: #FDFCF7;
     border-radius: 25px;
     width: 2.15em;
     height: 2.15em;
@@ -195,8 +194,8 @@
 }
 
 #mobile-links li:hover #m-user-icon {
-    border: 2px solid #4A80F0;
-    background-color: #4A80F0;
+    border: 2px solid #E36166;
+    background-color: #E36166;
 }
 
 #mobile-links .m-logoutbtn i {
@@ -205,15 +204,15 @@
     padding-top: 30px;
     padding-bottom: 30px;
     padding-left: 15%;
-    border: 8px solid #1A1A23;
-    color: #FDFDFD;
+    border: 8px solid #1D222C;
+    color: #FDFCF7;
     font-size: x-large;
     text-decoration: none;
 }
 
 #mobile-links .m-logoutbtn i:hover {
-    color: #4A80F0;
-    border-left: 8px solid #4A80F0; 
+    color: #E36166;
+    border-left: 8px solid #E36166; 
 }
 
 @media (min-width: 900px) {

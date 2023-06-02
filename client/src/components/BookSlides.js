@@ -12,7 +12,6 @@ export default function BookSlides (props) {
     const [loading, setLoading] = useState(true);
 
     useEffect (()=> {
-        setTimeout(()=> setLoading(false), 1500);
     }, [])
 
     return (
@@ -33,7 +32,8 @@ export default function BookSlides (props) {
                     <Placeholder/>
                     <Placeholder/>
                     <Placeholder/>
-
+                    <Placeholder/>
+                    <Placeholder/>
                   </>
                 ) : (
                   bookData.map((book) => {
