@@ -12,6 +12,7 @@ export default function BookSlides (props) {
     const [loading, setLoading] = useState(true);
 
     useEffect (()=> {
+        setTimeout(()=> setLoading(false), 1500);
     }, [])
 
     return (
