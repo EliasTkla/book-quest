@@ -1,19 +1,26 @@
 {
   "files": {
-    "main.css": "/static/css/main.f630eeca.css",
-    "main.js": "/static/js/main.c0b50d5e.js",
-    "static/media/loading.gif": "/static/media/loading.946caafebfb858f16fa7.gif",
-    "static/media/interlaced.png": "/static/media/interlaced.62abeced5170bc4e8368.png",
-    "static/media/problem-image.svg": "/static/media/problem-image.4047f16cb75b2698a953eaf1d37f026c.svg",
-    "static/media/bookshelf.svg": "/static/media/bookshelf.f3e4d3396673d39f46f3d91cada314f8.svg",
-    "static/media/reading.svg": "/static/media/reading.167e9516717826eda0e69da1b05db9e6.svg",
-    "static/media/bookmark.svg": "/static/media/bookmark.ad344f80b35497c3fc9e1e6142207fe7.svg",
+    "main.css": "/static/css/main.23e76941.css",
+    "main.js": "/static/js/main.0025c6da.js",
+    "static/media/reading-2.svg": "/static/media/reading-2.d961de409f2965e2ab89f985cfffa939.svg",
+    "static/media/logo.png": "/static/media/logo.99d66585e7250aeb0452.png",
+    "static/media/bug.svg": "/static/media/bug.b1b2b22e671707f2f3aaa7734fa8966f.svg",
+    "static/media/reading.svg": "/static/media/reading.14b9e26f7e23acd5f5059e5b3186fba8.svg",
+    "static/media/reading-list.svg": "/static/media/reading-list.0ddcec65beaae96722c142131e697753.svg",
     "index.html": "/index.html",
-    "main.f630eeca.css.map": "/static/css/main.f630eeca.css.map",
-    "main.c0b50d5e.js.map": "/static/js/main.c0b50d5e.js.map"
+    "static/media/xmark-solid.svg": "/static/media/xmark-solid.6af010327c10a0167290.svg",
+    "static/media/arrow-right-solid.svg": "/static/media/arrow-right-solid.cbce83ae8b964c3a8379692addc45f5f.svg",
+    "static/media/arrow-left-solid.svg": "/static/media/arrow-left-solid.261fc5b9e874e6b41662b6f4cb9bbc60.svg",
+    "static/media/angle-right.svg": "/static/media/angle-right.3efd9ded5834bc1178d385aa1c4f276c.svg",
+    "static/media/angle-left.svg": "/static/media/angle-left.07823b81d7b3f5ae2b7d57094b674399.svg",
+    "static/media/link-2.svg": "/static/media/link-2.927d555afc61ac1f0a58.svg",
+    "static/media/link.svg": "/static/media/link.7976c47cea45f66c5bc2.svg",
+    "static/media/search.svg": "/static/media/search.f9705ffe407455bd10ed.svg",
+    "main.23e76941.css.map": "/static/css/main.23e76941.css.map",
+    "main.0025c6da.js.map": "/static/js/main.0025c6da.js.map"
   },
   "entrypoints": [
-    "static/css/main.f630eeca.css",
-    "static/js/main.c0b50d5e.js"
+    "static/css/main.23e76941.css",
+    "static/js/main.0025c6da.js"
   ]
 }
