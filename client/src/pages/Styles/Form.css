@@ -105,8 +105,7 @@ form img {
 }
 
 #email-error, #username-error, #pass-error, #mpass-error {
-    color: red;
-    display: none;    
+    color: transparent;   
 }
 
 form #email, #username, #password {

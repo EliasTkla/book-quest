@@ -56,20 +56,19 @@ export default function Profile() {
     } else {
       navigate("/login");
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [email, isAuthenticated, navigate]);
 
   useEffect(() => {
     if ((!focusUsername || focusUsername) && newUsername !== "" && newUsername !== null && !user_format.test(newUsername)){
       document.getElementById('username-error').style.color = "red";
     } else {
-      document.getElementById('username-error').style.color = "#1a1a23";
+      document.getElementById('username-error').style.color = "transparent";
     }
 
     if ((!focusPwd || focusPwd) && newPwd !== "" && newPwd !== null && !pwd_format.test(newPwd)){
       document.getElementById('pass-error').style.color = "red";
     } else {
-      document.getElementById('pass-error').style.color = "#1a1a23";
+      document.getElementById('pass-error').style.color = "transparent";
     } 
 
     if(verified){

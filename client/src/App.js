@@ -20,7 +20,7 @@ export default function App(){
       
       <Routes>
         <Route path='/' element={<Home />}/>
-        <Route path='/books' element={<Books />}/>
+        <Route path='/explore' element={<Books />}/>
         <Route path='/mylog' element={<RequireAuth loginPath='/login'>
           <MyLog />
         </RequireAuth>}/>

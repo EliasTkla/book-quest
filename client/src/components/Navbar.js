@@ -80,7 +80,7 @@ export default function Navbar() {
             <div className='navbar-links'>
                 <ul>
                     <li>
-                        <Link className='navbutton' to='/books'>
+                        <Link className='navbutton' to='/explore'>
                             Explore
                         </Link>
                     </li>
@@ -123,7 +123,7 @@ export default function Navbar() {
             <div id='mobile-links'>
                 <ul>
                     <li>
-                        <Link to='/books' onClick={()=> {toggleMobileMenu()}}>
+                        <Link to='/explore' onClick={()=> {toggleMobileMenu()}}>
                             Explore
                         </Link>
                     </li>
