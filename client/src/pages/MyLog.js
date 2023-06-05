@@ -9,43 +9,39 @@ import './Styles/MyLog.css';
 export default function MyLog() {
 
   const authUser = useAuthUser();
-  const email = authUser().email;
-  const [booksId, setBooksId] = useState([]);
-  const [booksData, setBooksData] = useState([]);
-  const [booksLogged, setBooksLogged] = useState(false);
+  const [loggedBooks, setLoggedBooks] = useState([]);
+  const [searchResults, setSearchResults] = useState([]);
+  const [noLogs, setNoLogs] = useState(true);
   const [searchKey, setSearchKey] = useState('');
   const [searched, setSearched] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
   useEffect(() => {
+    const email = authUser().email;
+
     Axios.post('https://bookquest.herokuapp.com/books', {
       email: email,
     }).then((response) => {
       if(response.data.message){
-        setBooksLogged(false);
+        setNoLogs(true);
       } else { 
-        setBooksLogged(true);
-
-        setBooksId(response.data);  
+        setNoLogs(false);  
         
-        let array = [];
-
-        booksId.map((log) => {
-          Axios.get('https://www.googleapis.com/books/v1/volumes?q='+log.book_id)
+        setLoggedBooks(response.data.map(log => {
+          let book = [];
+          Axios.get('https://www.googleapis.com/books/v1/volumes?q='+log.book_id+'&key=AIzaSyDQ8kCRJpt7BCr2_WoshbW57wBBd_ppMFE')
           .then(res=> {
-            array.push(res.data.items[0]);
             setError(false);
+            book = res.data;
           })
           .catch(err=> {
             console.log(err);
             setError(true);
           });
 
-          return null;
-        })
-
-        setBooksData(array);
+          return book;
+        }));
       }
 
       setError(false);
@@ -54,7 +50,8 @@ export default function MyLog() {
       console.log(err);
       setError(true);
     });
-  }, [email, booksId]);
+  }, [authUser]);
+
 
   function searchBook (search) {
     if(search !== ""){
@@ -62,13 +59,13 @@ export default function MyLog() {
 
       let array = [];
 
-      booksData.filter(book => book.volumeInfo.title === search).map(filteredBook => {
+      loggedBooks.filter(book => book.volumeInfo.title === search).map(filteredBook => {
           array.push(filteredBook);
 
         return null;
       })
 
-      setBooksData(array);
+      setSearchResults(array);
 
       setTimeout(()=> setLoading(false), 3000);
       setSearched(true);
@@ -83,11 +80,11 @@ export default function MyLog() {
         <input className='search-input' type="search" placeholder="Search title, author, genre ..." value={searchKey} onChange={e => setSearchKey(e.target.value)} onKeyDown={(e) => {if (e.key === 'Enter') {searchBook(searchKey)}}}/>
       </div>
 
-      {booksLogged ? '' : <h2 id='no-logs'>Looks like you don't have any books logged</h2>}
+      {!noLogs ? '' : <h2 id='no-logs'>You haven't logged any books yet, head to the explore page to find some books.</h2>}
 
       { !error ?
           !searched ?
-            booksData.map((book) => {
+            searchResults.map((book) => {
               let cover =  book.volumeInfo.imageLinks && book.volumeInfo.imageLinks.thumbnail;
 
               if(cover !== undefined){
@@ -128,7 +125,7 @@ export default function MyLog() {
                     <Placeholder/>
                   </>
                 ) : (
-                  booksData.map((book) => {
+                  loggedBooks.map((book) => {
                     let cover =  book.volumeInfo.imageLinks && book.volumeInfo.imageLinks.thumbnail;
 
                     if(cover !== undefined){
