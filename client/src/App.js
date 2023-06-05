@@ -5,7 +5,7 @@ import {  } from 'react-auth-kit';
 import './App.css';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
-import Books from './pages/Books';
+import Explore from './pages/Explore';
 import MyLog from './pages/MyLog';
 import BookDetail from './components/BookDetail';
 import Login from './pages/Login';
@@ -20,7 +20,7 @@ export default function App(){
       
       <Routes>
         <Route path='/' element={<Home />}/>
-        <Route path='/explore' element={<Books />}/>
+        <Route path='/explore' element={<Explore />}/>
         <Route path='/mylog' element={<RequireAuth loginPath='/login'>
           <MyLog />
         </RequireAuth>}/>

@@ -43,7 +43,7 @@ export default function BookSlides (props) {
                     if(cover !== undefined){
                       return (
                         <span key={book.id}>
-                          <BookCard bookData={book}/> 
+                          <BookCard bookData={book} returnPage={'/explore'}/> 
                         </span> 
                       )
                     } else {

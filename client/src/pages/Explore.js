@@ -8,7 +8,7 @@ import BookCard  from '../components/BookCard.js';
 import Placeholder from '../components/Placeholder.js';
 import './Styles/Books.css';
 
-export default function Books() {
+export default function Explore() {
   const [searchKey, setSearchKey] = useState('');
   const [searched, setSearched] = useState(false);
   const [bookData, setBookData] = useState([]);
@@ -20,9 +20,9 @@ export default function Books() {
 
   useEffect(() => {
     Axios.all([
-        Axios.get('https://www.googleapis.com/books/v1/volumes?q=fiction&maxResults=15'),
-        Axios.get('https://www.googleapis.com/books/v1/volumes?q=fantasy&maxResults=15'),
-        Axios.get('https://www.googleapis.com/books/v1/volumes?q=history&maxResults=15')
+        Axios.get('https://www.googleapis.com/books/v1/volumes?q=fiction&key=AIzaSyDQ8kCRJpt7BCr2_WoshbW57wBBd_ppMFE&maxResults=15'),
+        Axios.get('https://www.googleapis.com/books/v1/volumes?q=fantasy&key=AIzaSyDQ8kCRJpt7BCr2_WoshbW57wBBd_ppMFE&maxResults=15'),
+        Axios.get('https://www.googleapis.com/books/v1/volumes?q=history&key=AIzaSyDQ8kCRJpt7BCr2_WoshbW57wBBd_ppMFE&maxResults=15')
     ])
     .then(res=> {
         setBookData1(res[0].data.items);
@@ -41,7 +41,7 @@ export default function Books() {
     if(search !== ""){
       setLoading(true);
       
-      Axios.get('https://www.googleapis.com/books/v1/volumes?q='+search+'&maxResults=40')
+      Axios.get('https://www.googleapis.com/books/v1/volumes?q='+search+'&key=AIzaSyDQ8kCRJpt7BCr2_WoshbW57wBBd_ppMFE&maxResults=40')
       .then(res=> {
         setBookData(res.data.items);
         setError(false);
@@ -126,7 +126,7 @@ export default function Books() {
                     if(cover !== undefined){
                       return (
                         <span key={book.id}>
-                          <BookCard bookData={book}/> 
+                          <BookCard bookData={book} returnPage={'/explore'}/> 
                         </span> 
                       )
                     } else {
