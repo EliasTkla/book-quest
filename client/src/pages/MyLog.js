@@ -30,7 +30,8 @@ export default function MyLog() {
         
         setLoggedBooks(response.data.map(log => {
           let book = [];
-          Axios.get('https://www.googleapis.com/books/v1/volumes?q='+log.book_id+'&key=AIzaSyDQ8kCRJpt7BCr2_WoshbW57wBBd_ppMFE')
+
+          Axios.get('https://www.googleapis.com/books/v1/volumes?q='+log.book_id+'&key=AIzaSyDQ8kCRJpt7BCr2_WoshbW57wBBd_ppMFE&maxResults=1')
           .then(res=> {
             setError(false);
             book = res.data;
