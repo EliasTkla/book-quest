@@ -113,7 +113,7 @@ export default function Books() {
             </div> 
           :
             <span className='error-container'>
-              <h2>Something went wrong, please refresh the page</h2>
+              <h3>Something went wrong, please refresh the page</h3>
               <img src={Error} alt='error'/>
             </span>
         } 

@@ -119,6 +119,21 @@
     background-color: #E36166;
 }
 
+.error-container {
+    width: 100%;
+    display: block;
+    text-align: center;
+}
+
+.error-container h3 {
+    font-weight: lighter;
+}
+
+.error-container img {
+    width: 45%;
+    margin-top: -5vh;
+}
+
 @media (max-width: 1280px) {
     .book-content {
         width: 100%;

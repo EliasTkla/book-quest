@@ -9,9 +9,9 @@ import './Styles/MyLog.css';
 export default function MyLog() {
 
   const authUser = useAuthUser();
-  const [loggedBooks, setLoggedBooks] = useState([]);
+  const [loggedBooks] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
-  const [noLogs, setNoLogs] = useState(true);
+  const [noLogs, setNoLogs] = useState(false);
   const [searchKey, setSearchKey] = useState('');
   const [searched, setSearched] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -26,49 +26,53 @@ export default function MyLog() {
       if(response.data.message){
         setNoLogs(true);
       } else { 
-        setNoLogs(false);  
+        setNoLogs(false);
         
-        setLoggedBooks(response.data.map(log => {
-          let book = [];
-            console.log(log.book_id);
-          // Axios.get('https://www.googleapis.com/books/v1/volumes?q='+log.book_id+'&key=AIzaSyDQ8kCRJpt7BCr2_WoshbW57wBBd_ppMFE&maxResults=1')
-          // .then(res=> {
-          //   setError(false);
-          //   book = res.data;
-          // })
-          // .catch(err=> {
-          //   console.log(err);
-          //   setError(true);
-          // });
+        response.data.map(log => { 
+          Axios.get('https://www.googleapis.com/books/v1/volumes?q='+log.book_id+'&key=AIzaSyDQ8kCRJpt7BCr2_WoshbW57wBBd_ppMFE&maxResults=1')
+          .then(res=> {
+            setError(false);
+            loggedBooks.push(res.data.items[0]);
+          })
+          .catch(err=> {
+            console.log(err);
+            setError(true);
+          });
 
-          return book;
-        }));
+          return null;
+        });  
       }
-
+      console.log(loggedBooks);
+      setTimeout(()=> setLoading(false), 3000);
       setError(false);
     })
     .catch(err=> {
       console.log(err);
       setError(true);
     });
-  }, [authUser]);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   function searchBook (search) {
     if(search !== ""){
       setLoading(true);
 
-      let array = [];
+      var array = [];
 
-      loggedBooks.filter(book => book.volumeInfo.title === search).map(filteredBook => {
-          array.push(filteredBook);
+      loggedBooks.filter(book => {
+        let bk = book.volumeInfo.title;
+
+        if(bk.toLowerCase().includes(search.toLowerCase())){
+          array.push(book);
+        }
 
         return null;
       })
 
       setSearchResults(array);
-
-      setTimeout(()=> setLoading(false), 3000);
+      
+      setTimeout(()=> setLoading(false), 1000);
       setSearched(true);
     } else {
       setSearched(false);
@@ -76,77 +80,67 @@ export default function MyLog() {
   }
 
   return (
-    <div className='mylog-page'>
+    <div>
       <div id='search-container'>
-        <input className='search-input' type="search" placeholder="Search title, author, genre ..." value={searchKey} onChange={e => setSearchKey(e.target.value)} onKeyDown={(e) => {if (e.key === 'Enter') {searchBook(searchKey)}}}/>
+        <input className='search-input-full-width' type="search" placeholder="Search title, author, genre ..." value={searchKey} onChange={e => setSearchKey(e.target.value)} onKeyDown={(e) => {if (e.key === 'Enter') {searchBook(searchKey)}}}/>
       </div>
 
-      {!noLogs ? '' : <h2 id='no-logs'>You haven't logged any books yet, head to the explore page to find some books.</h2>}
+    <div className='search-results'>
+      {noLogs ? 
+          <h3 id='no-logs'>You haven't logged any books yet, head to the explore page to start logging.</h3> 
+        : 
+          !error ?
+            loading ?
+                <>
+                  <Placeholder/>
+                  <Placeholder/>
+                  <Placeholder/>
+                  <Placeholder/>
+                  <Placeholder/>
+                  <Placeholder/>
+                  <Placeholder/>
+                  <Placeholder/>
+                  <Placeholder/>
+                  <Placeholder/>
+                  <Placeholder/>
+                  <Placeholder/>
+                </>
+              : 
+                searched ?
+                    searchResults.map((book) => {
+                      let cover =  book.volumeInfo.imageLinks && book.volumeInfo.imageLinks.thumbnail;
 
-      { !error ?
-          !searched ?
-            searchResults.map((book) => {
-              let cover =  book.volumeInfo.imageLinks && book.volumeInfo.imageLinks.thumbnail;
+                      if(cover !== undefined){
+                        return (
+                          <span key={book.id}>
+                            <BookCard bookData={book} returnPage={'/mylog'}/> 
+                          </span> 
+                        )
+                      } else {
+                        return null;
+                      }
+                    }) 
+                  :
+                    loggedBooks.map((book) => {
+                      let cover =  book.volumeInfo.imageLinks && book.volumeInfo.imageLinks.thumbnail;
 
-              if(cover !== undefined){
-                return (
-                  <span key={book.id}>
-                    <BookCard bookData={book} returnPage={'/explore'}/> 
-                  </span> 
-                )
-              } else {
-                return null;
-              }
-            }) 
-          :
-            <div className='search-results'>
-              { loading ? (
-                  <>
-                    <Placeholder/>
-                    <Placeholder/>
-                    <Placeholder/>
-                    <Placeholder/>
-                    <Placeholder/>
-                    <Placeholder/>
-                    <Placeholder/>
-                    <Placeholder/>
-                    <Placeholder/>
-                    <Placeholder/>
-                    <Placeholder/>
-                    <Placeholder/>
-                    <Placeholder/>
-                    <Placeholder/>
-                    <Placeholder/>
-                    <Placeholder/>
-                    <Placeholder/>
-                    <Placeholder/>
-                    <Placeholder/>
-                    <Placeholder/>
-                    <Placeholder/>
-                    <Placeholder/>
-                  </>
-                ) : (
-                  loggedBooks.map((book) => {
-                    let cover =  book.volumeInfo.imageLinks && book.volumeInfo.imageLinks.thumbnail;
-
-                    if(cover !== undefined){
-                      return (
-                        <span key={book.id}>
-                          <BookCard bookData={book} returnPage={'/explore'}/> 
-                        </span> 
-                      )
-                    } else {
-                      return null;
-                    }
-                  }) 
-              )}
-            </div>
-        :
-          <span className='error-container'>
-            <h2>Something went wrong, please refresh the page</h2>
-            <img src={Error} alt='error'/>
-          </span>
-      }  
+                      if(cover !== undefined){
+                        return (
+                          <span key={book.id}>
+                            <BookCard bookData={book} returnPage={'/mylog'}/> 
+                          </span> 
+                        )
+                      } else {
+                        return null;
+                      }
+                    })      
+            :
+              <span className='error-container'>
+                <h3>Something went wrong, please refresh the page</h3>
+                <img src={Error} alt='error'/>
+              </span>  
+      }
+      </div>
     </div>
   )
 }

@@ -99,8 +99,8 @@
     text-align: center;
 }
 
-.error-container h2 {
-    font-weight: 400;
+.error-container h3 {
+    font-weight: lighter;
 }
 
 .error-container img {
