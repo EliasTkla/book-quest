@@ -33,7 +33,10 @@ export default function Navbar() {
         window.addEventListener('resize', windowWidth);
 
         setTimeout(()=> {
-            localStorage.removeItem("searchKey");
+            window.localStorage.removeItem("searchKey");
+            window.localStorage.removeItem("recentSearch");
+            window.localStorage.removeItem("myLog-searchKey");
+            window.localStorage.removeItem("myLog-recentSearch");
         }, 2 * 60 * 1000);        
     })
 

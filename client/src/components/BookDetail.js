@@ -24,6 +24,8 @@ export default function Books() {
   const summary = location.state.description;
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+    
     if(isAuthenticated()) {
       const email = authUser().email;
 
@@ -75,9 +77,11 @@ export default function Books() {
             if(response.data.message1) {
               setLogStatus(false);
               togglePopup("&emsp;"+response.data.message1);
+              window.localStorage.removeItem("myLogs");
             } else if(response.data.message2) {
               setLogStatus(true);
               togglePopup("&emsp;"+response.data.message2);
+              window.localStorage.removeItem("myLogs");
             }
           }
         })

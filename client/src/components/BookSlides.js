@@ -12,7 +12,11 @@ export default function BookSlides (props) {
     const [loading, setLoading] = useState(true);
 
     useEffect (()=> {
-      setTimeout(()=> setLoading(false), 1000);
+      if(window.localStorage.getItem("list1") !== undefined && window.localStorage.getItem("list2") !== undefined && window.localStorage.getItem("list3") !== undefined){
+        setLoading(false);
+      } else {
+        setTimeout(()=> setLoading(false), 1000);
+      }
     }, [])
 
     return (

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import Axios from 'axios';
 import BookSlides from '../components/BookSlides.js';
 import Error from '../assets/images/bug.svg';
@@ -17,34 +17,83 @@ export default function Explore() {
   const [bookData3, setBookData3] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const boxRef = useRef();
 
   useEffect(() => {
-    Axios.all([
+    if(!window.localStorage.getItem("recentSearch") && !window.localStorage.getItem("recentSearch") !== undefined){
+      setSearched(false);
+
+      loadDefaultBooks();
+    } else {
+      setBookData(JSON.parse(window.localStorage.getItem("recentSearch")));
+      setSearchKey(window.localStorage.getItem("searchKey"));
+
+      setSearched(true);
+      setLoading(false);
+
+      if(window.localStorage.getItem("scrollTo")){
+        var scrollY = window.localStorage.getItem("scrollTo");
+
+        window.scrollTo(0, scrollY);
+      }
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  function loadDefaultBooks(){
+    if(window.localStorage.getItem("list1") !== undefined && window.localStorage.getItem("list2") !== undefined && window.localStorage.getItem("list3") !== undefined){
+      setBookData1(JSON.parse(window.localStorage.getItem("list1")));
+      setBookData2(JSON.parse(window.localStorage.getItem("list2")));
+      setBookData3(JSON.parse(window.localStorage.getItem("list3")));
+    } else {
+      Axios.all([
         Axios.get('https://www.googleapis.com/books/v1/volumes?q=fiction&key=AIzaSyDQ8kCRJpt7BCr2_WoshbW57wBBd_ppMFE&maxResults=15'),
         Axios.get('https://www.googleapis.com/books/v1/volumes?q=fantasy&key=AIzaSyDQ8kCRJpt7BCr2_WoshbW57wBBd_ppMFE&maxResults=15'),
         Axios.get('https://www.googleapis.com/books/v1/volumes?q=history&key=AIzaSyDQ8kCRJpt7BCr2_WoshbW57wBBd_ppMFE&maxResults=15')
-    ])
-     .then(res=> {
+      ])
+      .then(res=> {
         setBookData1(res[0].data.items);
         setBookData2(res[1].data.items);
         setBookData3(res[2].data.items);
 
+        let list1 = JSON.stringify(res[0].data.items);
+        let list2 = JSON.stringify(res[1].data.items);
+        let list3 = JSON.stringify(res[2].data.items);
+
+        window.localStorage.setItem("list1", list1);
+        window.localStorage.setItem("list2", list2);
+        window.localStorage.setItem("list3", list3);
+
         setError(false);
-    })
-    .catch(err=> {
+      })
+      .catch(err=> {
         console.log(err);
         setError(true);
-    });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+      });
+    }
+
+    if(window.localStorage.getItem("scrollTo")){
+      var scrollY = window.localStorage.getItem("scrollTo");
+
+      window.scrollTo(0, scrollY - 300);
+    }
+  }
 
   function searchBook (search) {
     if(search !== ""){
+      setSearchKey(search);
+
+      window.localStorage.setItem("searchKey", search);
+
       setLoading(true);
       
       Axios.get('https://www.googleapis.com/books/v1/volumes?q='+search+'&key=AIzaSyDQ8kCRJpt7BCr2_WoshbW57wBBd_ppMFE&maxResults=40')
       .then(res=> {
         setBookData(res.data.items);
+
+        let list = JSON.stringify(res.data.items);
+        window.localStorage.setItem("recentSearch", list);
+
         setError(false);
       })
       .catch(err=> {
@@ -53,10 +102,23 @@ export default function Explore() {
       });
 
       setTimeout(()=> setLoading(false), 3000);
+
       setSearched(true);
     } else {
       setSearched(false);
     }
+  }
+
+  function clearSearch() {
+    window.localStorage.removeItem("searchKey");
+    window.localStorage.removeItem("recentSearch");
+
+    setSearchKey('');
+    setBookData('');
+
+    loadDefaultBooks();
+
+    setSearched(false);
   }
 
   return (
@@ -86,6 +148,10 @@ export default function Explore() {
         </div>
       </div>
 
+      {searched && (
+        <button id='clear-search' onClick={() => {clearSearch()}}><u>Clear Search</u></button>
+      )}
+      
       { !error ?
           !searched ?
             <>
@@ -94,7 +160,7 @@ export default function Explore() {
               <BookSlides category={'History'} bookData={bookData3}/>
             </>
           :
-            <div className='search-results'>
+            <div className='search-results' ref={boxRef}>
               { loading ? (
                   <>
                     <Placeholder/>
@@ -123,7 +189,7 @@ export default function Explore() {
                     } else {
                       return null;
                     }
-                  }) 
+                  })
               )}
             </div>
         :

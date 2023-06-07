@@ -9,7 +9,7 @@ import './Styles/MyLog.css';
 export default function MyLog() {
 
   const authUser = useAuthUser();
-  const [loggedBooks] = useState([]);
+  const [loggedBooks, setLoggedBooks] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
   const [noLogs, setNoLogs] = useState(false);
   const [searchKey, setSearchKey] = useState('');
@@ -18,49 +18,90 @@ export default function MyLog() {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    const email = authUser().email;
+    if(!window.localStorage.getItem("myLog-recentSearch") && window.localStorage.getItem("myLog-recentSearch") !== undefined){
+      setSearched(false);
 
-    Axios.post('https://bookquest.herokuapp.com/books', {
-      email: email,
-    }).then((response) => {
-      if(response.data.message){
-        setNoLogs(true);
-      } else { 
-        setNoLogs(false);
-        
-        response.data.map(log => { 
-          Axios.get('https://www.googleapis.com/books/v1/volumes?q='+log.book_id+'&key=AIzaSyDQ8kCRJpt7BCr2_WoshbW57wBBd_ppMFE&maxResults=1')
-          .then(res=> {
-            setError(false);
-            loggedBooks.push(res.data.items[0]);
-          })
-          .catch(err=> {
-            console.log(err);
-            setError(true);
-          });
+      loadLoggedBooks();
+    } else {
+      setSearchResults(JSON.parse(window.localStorage.getItem("myLog-recentSearch")));
+      setSearchKey(window.localStorage.getItem("myLog-searchKey"));
 
-          return null;
-        });  
+      setSearched(true);
+      setLoading(false);
+
+      if(window.localStorage.getItem("scrollTo")){
+        var scrollY = window.localStorage.getItem("scrollTo");
+
+        window.scrollTo(0, scrollY);
       }
-
-      setTimeout(()=> setLoading(false), 3000);
-      setError(false);
-    })
-    .catch(err=> {
-      console.log(err);
-      setError(true);
-    });
+    }
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  function loadLoggedBooks() {
+    if(window.localStorage.getItem("myLogs") && window.localStorage.getItem("myLogs") !== undefined && window.localStorage.getItem("myLogs") !== []){
+      setLoggedBooks(JSON.parse(window.localStorage.getItem("myLogs")));
+      setLoading(false);
+    } else {
+      const email = authUser().email;
+
+      Axios.post('https://bookquest.herokuapp.com/books', {
+        email: email,
+      }).then((response) => {
+        if(response.data.message){
+          setNoLogs(true);
+        } else { 
+          setNoLogs(false);
+          
+          response.data.map(log => { 
+            Axios.get('https://www.googleapis.com/books/v1/volumes?q='+log.book_id+'&key=AIzaSyDQ8kCRJpt7BCr2_WoshbW57wBBd_ppMFE&maxResults=1')
+            .then(res=> {
+              setError(false);
+              loggedBooks.push(res.data.items[0]);
+            })
+            .catch(err=> {
+              console.log(err);
+              setError(true);
+            });
+
+            return null;
+          });
+
+          setTimeout(()=> setLoading(false), 3000);
+
+          setTimeout(() => {
+            let array = loggedBooks;
+    
+            let list = JSON.stringify(array);
+            window.localStorage.setItem("myLogs", list);
+          }, 4000);
+        }
+        
+        setError(false);
+      })
+      .catch(err=> {
+        console.log(err);
+        setError(true);
+      });
+    }
+
+    if(window.localStorage.getItem("scrollTo")){
+      var scrollY = window.localStorage.getItem("scrollTo");
+
+      window.scrollTo(0, scrollY - 300);
+    }
+  }
 
   function searchBook (search) {
     if(search !== ""){
       setLoading(true);
 
+      window.localStorage.setItem("myLog-searchKey", search);
+
       var array = [];
 
-      loggedBooks.filter(book => {
+      loggedBooks.map(book => {
         let bk = book.volumeInfo.title;
 
         if(bk.toLowerCase().includes(search.toLowerCase())){
@@ -69,6 +110,9 @@ export default function MyLog() {
 
         return null;
       })
+    
+      let list = JSON.stringify(array);
+      window.localStorage.setItem("myLog-recentSearch", list);
 
       setSearchResults(array);
       
@@ -79,11 +123,27 @@ export default function MyLog() {
     }
   }
 
+  function clearSearch() {
+    window.localStorage.removeItem("myLog-searchKey");
+    window.localStorage.removeItem("myLog-recentSearch");
+
+    setSearchKey('');
+    setLoggedBooks('');
+
+    loadLoggedBooks();
+
+    setSearched(false);
+  }
+
   return (
     <div>
       <div id='search-container'>
         <input className='search-input-full-width' type="search" placeholder="Search title, author, genre ..." value={searchKey} onChange={e => setSearchKey(e.target.value)} onKeyDown={(e) => {if (e.key === 'Enter') {searchBook(searchKey)}}}/>
       </div>
+
+      {searched && (
+        <button id='clear-search' onClick={() => {clearSearch()}}><u>Clear Search</u></button>
+      )}
 
     <div className='search-results'>
       {noLogs ? 

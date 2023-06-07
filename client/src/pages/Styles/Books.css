@@ -93,6 +93,16 @@
     flex-wrap: wrap;
 }
 
+#clear-search {
+    width: 110px;
+    display: block;
+    margin-left: 5%;
+    margin-bottom: 10px;
+    border: none;
+    font-size: medium;
+    background: transparent;
+}
+
 .error-container {
     width: 100%;
     display: block;

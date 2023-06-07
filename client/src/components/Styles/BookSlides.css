@@ -30,8 +30,7 @@
 .book-slide {
     width: 90%;
     height: 380px;
-    margin: auto;
-    margin-left: 5%;
+    margin: auto auto 2% 5%;
     display: flex;
     flex-wrap: nowrap;
     transition: 0.5s;
