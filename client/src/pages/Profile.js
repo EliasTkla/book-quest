@@ -24,28 +24,28 @@ export default function Profile() {
   const [updateStatus, setUpdateStatus] = useState('_');
   const [verifyPwd, setVerifyPwd] = useState();
   const [verified, setVerified] = useState(true);
-  const email = "authUser().email";
+  const email = authUser().email;
 
-  // useEffect(() => {
-  //   Axios.post('https://bookquest.herokuapp.com/userInfo', {
-  //     email: email,
-  //     verifyPwd: undefined,
-  //   }).then((response) => {
-  //     if(response.data.message){
-  //       document.getElementById("form-error").style.color = "red";
-  //       document.getElementById("form-error").innerHTML = response.data.message;
-  //     } else { 
-  //       document.getElementById("email").value = response.data[0].email;
-  //       document.getElementById("username").value = response.data[0].username;
-  //       document.getElementById("password").value = response.data[0].password;
-  //     }
-  //   })
-  //   .catch(err=> {
-  //     console.log(err);
-  //     setError(true);
-  //   }); 
-  // // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, []);
+  useEffect(() => {
+    Axios.post('https://bookquest.herokuapp.com/userInfo', {
+      email: email,
+      verifyPwd: undefined,
+    }).then((response) => {
+      if(response.data.message){
+        document.getElementById("form-error").style.color = "red";
+        document.getElementById("form-error").innerHTML = response.data.message;
+      } else { 
+        document.getElementById("email").value = response.data[0].email;
+        document.getElementById("username").value = response.data[0].username;
+        document.getElementById("password").value = response.data[0].password;
+      }
+    })
+    .catch(err=> {
+      console.log(err);
+      setError(true);
+    }); 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     if(!error){
