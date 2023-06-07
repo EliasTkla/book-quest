@@ -42,7 +42,7 @@ export default function MyLog() {
           return null;
         });  
       }
-      console.log(loggedBooks);
+
       setTimeout(()=> setLoading(false), 3000);
       setError(false);
     })

@@ -19,7 +19,7 @@ export default function Explore() {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    if(localStorage.getItem("list1") !== undefined && localStorage.getItem("list2") !== undefined && localStorage.getItem("list3") !== undefined){
+    if(localStorage.getItem("list1") && localStorage.getItem("list2") && localStorage.getItem("list3")){
       setBookData1(JSON.parse(localStorage.getItem("list1")));
       setBookData2(JSON.parse(localStorage.getItem("list2")));
       setBookData3(JSON.parse(localStorage.getItem("list3")));
