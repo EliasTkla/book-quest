@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useSignOut } from 'react-auth-kit';
 import { useNavigate } from 'react-router-dom';
 import { useIsAuthenticated } from 'react-auth-kit';
+import User from '../assets/images/user.svg';
 import './Styles/Navbar.css';
 
 export default function Navbar() {
@@ -102,7 +103,7 @@ export default function Navbar() {
                         <>
                             <li>
                                 <Link to='/Profile' >
-                                    <img id='user-icon' src={require('../assets/images/user-icon.png')} alt='user-icon' />
+                                    <img id='user-icon' src={User} alt='user-icon' />
                                 </Link>      
                             </li>
                             <li className='logoutbtn'>
@@ -152,7 +153,7 @@ export default function Navbar() {
                         <>
                             <li>
                                 <Link to='/Profile' onClick={()=> {toggleMobileMenu()}}>
-                                    <img id='m-user-icon' src={require('../assets/images/user-icon.png')} alt='user-icon' />
+                                    <img id='m-user-icon' src={User} alt='user-icon' />
                                 </Link>      
                             </li>
                             <li className='m-logoutbtn' onClick={()=> {toggleMobileMenu()}}>

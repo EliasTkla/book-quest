@@ -45,8 +45,9 @@ export default function Login() {
 
   return (
     <div className='form-page'>
-      <img src={Reading} alt='women reading book outside'/>
-      <form>
+      <img className='page-img' src={Reading} alt='women reading book outside'/>
+
+      <form className='user-form'>
         <h1>Welcome Back!</h1>
         <hr/>
         <h4 id='form-error'>Enter Info</h4>      

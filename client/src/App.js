@@ -27,9 +27,8 @@ export default function App(){
         <Route path='/bookdetail' element={<BookDetail />}/>
         <Route path='/login' element={<Login />}/>
         <Route path='/signup' element={<Signup />}/>
-        <Route path='/profile' element={<RequireAuth loginPath='/login'>
-          <Profile />
-        </RequireAuth>}/>
+        <Route path='/profile' element={
+          <Profile />}/>
         <Route path='*' element={<Error />}/>
         </Routes>
     </Router>

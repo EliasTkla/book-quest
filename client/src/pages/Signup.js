@@ -70,8 +70,9 @@ export default function Signup() {
 
   return (
     <div className='form-page'>
-      <img src={Reading} alt=""/>
-      <form>
+      <img className='page-img' src={Reading} alt=""/>
+
+      <form className='user-form'>
         <h1>Welcome to BookQuest</h1>
         <hr/>
         <h4 id='form-error'>{signupStatus}</h4>
