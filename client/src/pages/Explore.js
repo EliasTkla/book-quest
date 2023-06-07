@@ -19,36 +19,22 @@ export default function Explore() {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    if(localStorage.getItem("list1") && localStorage.getItem("list2") && localStorage.getItem("list3")){
-      setBookData1(JSON.parse(localStorage.getItem("list1")));
-      setBookData2(JSON.parse(localStorage.getItem("list2")));
-      setBookData3(JSON.parse(localStorage.getItem("list3")));
-    } else {
-      Axios.all([
-          Axios.get('https://www.googleapis.com/books/v1/volumes?q=fiction&key=AIzaSyDQ8kCRJpt7BCr2_WoshbW57wBBd_ppMFE&maxResults=15'),
-          Axios.get('https://www.googleapis.com/books/v1/volumes?q=fantasy&key=AIzaSyDQ8kCRJpt7BCr2_WoshbW57wBBd_ppMFE&maxResults=15'),
-          Axios.get('https://www.googleapis.com/books/v1/volumes?q=history&key=AIzaSyDQ8kCRJpt7BCr2_WoshbW57wBBd_ppMFE&maxResults=15')
-      ])
-      .then(res=> {
-          setBookData1(res[0].data.items);
-          setBookData2(res[1].data.items);
-          setBookData3(res[2].data.items);
+    Axios.all([
+        Axios.get('https://www.googleapis.com/books/v1/volumes?q=fiction&key=AIzaSyDQ8kCRJpt7BCr2_WoshbW57wBBd_ppMFE&maxResults=15'),
+        Axios.get('https://www.googleapis.com/books/v1/volumes?q=fantasy&key=AIzaSyDQ8kCRJpt7BCr2_WoshbW57wBBd_ppMFE&maxResults=15'),
+        Axios.get('https://www.googleapis.com/books/v1/volumes?q=history&key=AIzaSyDQ8kCRJpt7BCr2_WoshbW57wBBd_ppMFE&maxResults=15')
+    ])
+     .then(res=> {
+        setBookData1(res[0].data.items);
+        setBookData2(res[1].data.items);
+        setBookData3(res[2].data.items);
 
-          let list1 = JSON.stringify(bookData1);
-          let list2 = JSON.stringify(bookData2);
-          let list3 = JSON.stringify(bookData3);
-
-          localStorage.setItem("list1", list1);
-          localStorage.setItem("list2", list2);
-          localStorage.setItem("list3", list3);
-
-          setError(false);
-      })
-      .catch(err=> {
-          console.log(err);
-          setError(true);
-      });
-    }
+        setError(false);
+    })
+    .catch(err=> {
+        console.log(err);
+        setError(true);
+    });
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
