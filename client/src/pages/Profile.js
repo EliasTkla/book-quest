@@ -23,7 +23,7 @@ export default function Profile() {
   
   const [updateStatus, setUpdateStatus] = useState('_');
   const [verifyPwd, setVerifyPwd] = useState();
-  const [verified, setVerified] = useState(true);
+  const [verified, setVerified] = useState(false);
   const email = authUser().email;
 
   useEffect(() => {
