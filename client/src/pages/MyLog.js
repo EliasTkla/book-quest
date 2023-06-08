@@ -75,7 +75,7 @@ export default function MyLog() {
     
             let list = JSON.stringify(array);
             window.localStorage.setItem("myLogs", list);
-          }, 4000);
+          }, 3500);
         }
         
         setError(false);

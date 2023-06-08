@@ -41,7 +41,7 @@ export default function Explore() {
   }, []);
 
   function loadDefaultBooks(){
-    if(window.localStorage.getItem("list1") !== undefined && window.localStorage.getItem("list2") !== undefined && window.localStorage.getItem("list3") !== undefined){
+    if(window.localStorage.getItem("list1") && window.localStorage.getItem("list2") && window.localStorage.getItem("list3")){
       setBookData1(JSON.parse(window.localStorage.getItem("list1")));
       setBookData2(JSON.parse(window.localStorage.getItem("list2")));
       setBookData3(JSON.parse(window.localStorage.getItem("list3")));
@@ -64,7 +64,7 @@ export default function Explore() {
           window.localStorage.setItem("list1", list1);
           window.localStorage.setItem("list2", list2);
           window.localStorage.setItem("list3", list3);
-        }, 4000);
+        }, 3500);
 
         setError(false);
       })
