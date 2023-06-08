@@ -60,7 +60,6 @@ export default function Profile() {
   });
 
   const updateUser = () => {
-    console.log(email, username, modifyUsername, currentPwd, newPwd);
     if(user_format.test(modifyUsername) && pwd_format.test(currentPwd) && pwd_format.test(newPwd)){
       Axios.put('https://bookquest.herokuapp.com/updateUserInfo', {
         email: email,
