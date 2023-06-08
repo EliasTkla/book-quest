@@ -56,13 +56,15 @@ export default function Explore() {
         setBookData2(res[1].data.items);
         setBookData3(res[2].data.items);
 
-        let list1 = JSON.stringify(res[0].data.items);
-        let list2 = JSON.stringify(res[1].data.items);
-        let list3 = JSON.stringify(res[2].data.items);
+        setTimeout(() => {
+          let list1 = JSON.stringify(res[0].data.items);
+          let list2 = JSON.stringify(res[1].data.items);
+          let list3 = JSON.stringify(res[2].data.items);
 
-        window.localStorage.setItem("list1", list1);
-        window.localStorage.setItem("list2", list2);
-        window.localStorage.setItem("list3", list3);
+          window.localStorage.setItem("list1", list1);
+          window.localStorage.setItem("list2", list2);
+          window.localStorage.setItem("list3", list3);
+        }, 4000);
 
         setError(false);
       })
@@ -119,6 +121,8 @@ export default function Explore() {
     loadDefaultBooks();
 
     setSearched(false);
+
+    window.scrollTo(0, 0);
   }
 
   return (

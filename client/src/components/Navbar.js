@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSignOut } from 'react-auth-kit';
-// import { useNavigate } from 'react-router-dom';
 import { useIsAuthenticated } from 'react-auth-kit';
 import User from '../assets/images/user.svg';
 import './Styles/Navbar.css';
@@ -10,15 +9,14 @@ export default function Navbar() {
     
     const isAuthenticated = useIsAuthenticated();
     const signOut = useSignOut();
-    // const navigate = useNavigate();
     const [loggedIn, setLoggedIn] = useState(false);
     const [mobileMenuState, setMobileMenuState] = useState(false);
     const [screenWidth, setScreenWidth] = useState();
 
     const logout = () => {
+        window.localStorage.removeItem("myLogs");
         signOut();
         setLoggedIn(false);
-        // navigate("/login");
     } 
 
     useEffect(() => {
@@ -70,7 +68,6 @@ export default function Navbar() {
                 document.getElementById("mobile-links").style.display = "none";
             }, 500);
         }
-        
     }
 
     return (

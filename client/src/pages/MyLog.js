@@ -133,6 +133,8 @@ export default function MyLog() {
     loadLoggedBooks();
 
     setSearched(false);
+
+    window.scrollTo(0, 0);
   }
 
   return (

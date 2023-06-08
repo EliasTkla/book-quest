@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 import { useAuthUser } from 'react-auth-kit';
 import { useSignOut } from 'react-auth-kit';
-// import { useNavigate } from 'react-router-dom';
 import User from '../assets/images/user.svg';
 import Error from '../assets/images/bug.svg';
 import './Styles/Form.css';
@@ -11,7 +10,6 @@ export default function Profile() {
 
   const authUser = useAuthUser();
   const signOut = useSignOut();
-  // const navigate = useNavigate();
   const [error, setError] = useState(false);
 
   const user_format = /^[a-zA-Z0-9]{3,15}$/;
@@ -79,7 +77,6 @@ export default function Profile() {
           setUpdateStatus(response.data.message1);
 
           setTimeout(signOut(), 3000);
-          // navigate("/login");
         } else if(response.data.message2){
           document.getElementById('form-error').style.display = "block";
           document.getElementById('form-error').style.color = "black";
@@ -87,7 +84,6 @@ export default function Profile() {
           setUpdateStatus(response.data.message2);
 
           setTimeout(signOut(), 3000);
-          // navigate("/login");
         }
       })
       .catch(err=> {
