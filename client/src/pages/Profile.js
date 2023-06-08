@@ -32,7 +32,8 @@ export default function Profile() {
     document.getElementById('form-error').style.display = "none";
     document.getElementById("email").value = email;
     document.getElementById("username").value = username;
-  }, [email, username]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     if(!error){
@@ -59,6 +60,7 @@ export default function Profile() {
   });
 
   const updateUser = () => {
+    console.log(email, username, modifyUsername, currentPwd, newPwd);
     if(user_format.test(modifyUsername) && pwd_format.test(currentPwd) && pwd_format.test(newPwd)){
       Axios.put('https://bookquest.herokuapp.com/updateUserInfo', {
         email: email,
