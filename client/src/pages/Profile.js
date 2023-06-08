@@ -68,22 +68,15 @@ export default function Profile() {
       }).then((response) => {
         if(response.data.message){
           document.getElementById('form-error').style.display = "block";
+          document.getElementById('form-error').style.color = "black";
 
           setUpdateStatus(response.data.message);
+
+          setTimeout(signOut(), 5000);
         } else if(response.data.message1){
           document.getElementById('form-error').style.display = "block";
-          document.getElementById('form-error').style.color = "black";
 
-          setUpdateStatus(response.data.message1);
-
-          setTimeout(signOut(), 3000);
-        } else if(response.data.message2){
-          document.getElementById('form-error').style.display = "block";
-          document.getElementById('form-error').style.color = "black";
-
-          setUpdateStatus(response.data.message2);
-
-          setTimeout(signOut(), 3000);
+          setUpdateStatus(response.data.message);
         }
       })
       .catch(err=> {
