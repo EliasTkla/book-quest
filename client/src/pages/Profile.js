@@ -17,8 +17,8 @@ export default function Profile() {
   
   const [updateStatus, setUpdateStatus] = useState('');
   const [formEdit, setFormEdit] = useState(false);
-  const email = "authUser().email";
-  const username = "authUser().username";
+  const email = authUser().email;
+  const username = authUser().username;
 
   useEffect(() => {
     document.getElementById("email").value = email;
