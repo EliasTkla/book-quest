@@ -42,7 +42,7 @@ export default function Login() {
       })
       .catch((err) => {
         console.log(err);
-        setLoginStatus('Please try again in a while');
+        setLoginStatus('Please try again later!');
         document.getElementById("form-error").style.display = "block";
       });
     } else {

@@ -37,7 +37,7 @@ export default function Signup() {
       })
       .catch((err) => {
         console.log(err);
-        setSignupStatus('Please try again in a while');
+        setSignupStatus('Please try again later!');
         document.getElementById("form-error").style.display = "block";
       });
     } else {
