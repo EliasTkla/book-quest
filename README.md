@@ -33,7 +33,7 @@ Client Folder:
   
     % npm start
 
-Server Folder:
+Server Folder: - https://github.com/EliasTkla/bookquest-back-end
 
     % npm install express
   
