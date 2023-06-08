@@ -16,9 +16,9 @@ export default function Signup() {
   const [usern, setUsername] = useState();
   const [pwd, setPwd] = useState();
   const [confirmPwd, setConfirmPwd] = useState();
-  const [signupStatus, setSignupStatus] = useState("Begin your log!");
+  const [signupStatus, setSignupStatus] = useState('');
 
-  const signUser = (e) => {
+  const registerUser = (e) => {
     e.preventDefault();
 
     if(email_format.test(email) && user_format.test(usern) && pwd_format.test(pwd) && confirmPwd === pwd){
@@ -28,17 +28,21 @@ export default function Signup() {
         pwd: pwd,
       }).then((response) => {
         if(response.data.message){
-          document.getElementById("form-error").style.color = "red";
           setSignupStatus(response.data.message);
+          document.getElementById("form-error").style.display = "block";
         } else {
-          console.log(response.data.message);
+          document.getElementById("form-error").style.display = "none";
           navigate("/login");;
         }
       })
-      .catch(err=>console.log(err));;
+      .catch((err) => {
+        console.log(err);
+        setSignupStatus('Please try again in a while');
+        document.getElementById("form-error").style.display = "block";
+      });
     } else {
-      document.getElementById("form-error").style.color = "red";
       setSignupStatus('Please fill in the form to register!');
+      document.getElementById("form-error").style.display = "block";
     }
   }
 
@@ -76,16 +80,16 @@ export default function Signup() {
         <h1>Welcome to BookQuest</h1>
         <hr/>
         <h4 id='form-error'>{signupStatus}</h4>
-        <label>Email <span id='email-error'>[Invalid]</span></label>
+        <label>Email <i id='email-error'>[Invalid]</i></label>
         <input type="text" name="email" placeholder='Enter your email' onChange={(e => setEmail(e.target.value))} /><br/>
-        <label>Username <span id='username-error'>[3-15 characters]</span></label>
+        <label>Username <i id='username-error'>[3-15 characters]</i></label>
         <input type="text" name="username" placeholder='Enter a username' onChange={(e => setUsername(e.target.value))} /><br/>
-        <label>Password <span id='pass-error'>[8-20 characters]</span></label>
+        <label>Password <i id='pass-error'>[8-20 characters]</i></label>
         <input type="password" name="password" placeholder='Enter a password' onChange={(e => setPwd(e.target.value))} /><br/>
-        <label>Confirm Password <span id='mpass-error'>[Must match]</span></label>
+        <label>Confirm Password <i id='mpass-error'>[Must match]</i></label>
         <input type="password" name="password" placeholder='Confirm your password' onChange={(e => setConfirmPwd(e.target.value))} /><br/>
         <h5>Already have an account? <Link to='/login'>Login Here</Link></h5>
-        <button type='button' onClick={(e) => {signUser(e);}}>Register</button>
+        <button type='button' onClick={(e) => {registerUser(e);}}>Register</button>
       </form>
     </div>
   )
