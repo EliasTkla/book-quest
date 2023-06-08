@@ -14,6 +14,7 @@ export default function Login() {
   const [pwd, setPwd] = useState();
   const signIn = useSignIn();
   const navigate = useNavigate();
+  const [loginStatus, setLoginStatus] = useState('');
   
   const login = (e) => {
     e.preventDefault();
@@ -30,16 +31,23 @@ export default function Login() {
             tokenType: "Bearer",
             authState: { email: response.data.email, username: response.data.username},
           });
+          
+          document.getElementById("form-error").style.display = "none";
+
           navigate("/mylog");
         } else {
-          document.getElementById("form-error").style.color = "red";
-          document.getElementById("form-error").innerHTML = response.data.message;
+          setLoginStatus(response.data.message);
+          document.getElementById("form-error").style.display = "block";
         }
       })
-      .catch(err=>console.log(err));;
+      .catch((err) => {
+        console.log(err);
+        setLoginStatus('Please try again in a while');
+        document.getElementById("form-error").style.display = "block";
+      });
     } else {
-      document.getElementById("form-error").style.color = "red";
-      document.getElementById("form-error").innerHTML = 'Please enter your info to login!';
+      setLoginStatus("Please enter your info to login!");
+      document.getElementById("form-error").style.display = "block";
     }
   }
 
@@ -50,7 +58,7 @@ export default function Login() {
       <form className='user-form'>
         <h1>Welcome Back!</h1>
         <hr/>
-        <h4 id='form-error'>Enter Info</h4>      
+        <h4 id='form-error'>{loginStatus}</h4>      
         <label>Username</label>
         <input type="text" name="username" onChange={(e => setUsername(e.target.value))} placeholder="Enter username" required /><br/><br/>
         <label>Password</label>
