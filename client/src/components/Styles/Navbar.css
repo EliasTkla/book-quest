@@ -205,8 +205,8 @@
     padding-top: 30px;
     padding-bottom: 30px;
     padding-left: 15%;
-    border: 8px solid #1D222C;
-    color: #FDFCF7;
+    border: 8px solid transparent;
+    color: #1D222C;
     font-size: x-large;
     text-decoration: none;
 }
