@@ -15,6 +15,15 @@ export default function Navbar() {
 
     const logout = () => {
         window.localStorage.removeItem("myLogs");
+        window.localStorage.removeItem("list1");
+        window.localStorage.removeItem("list2");
+        window.localStorage.removeItem("list3");
+        window.localStorage.removeItem("scrollTo");
+        window.localStorage.removeItem("searchKey");
+        window.localStorage.removeItem("recentSearch");
+        window.localStorage.removeItem("myLog-searchKey");
+        window.localStorage.removeItem("myLog-recentSearch");
+
         signOut();
         setLoggedIn(false);
     } 

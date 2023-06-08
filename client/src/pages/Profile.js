@@ -76,7 +76,7 @@ export default function Profile() {
         } else if(response.data.message1){
           document.getElementById('form-error').style.display = "block";
 
-          setUpdateStatus(response.data.message);
+          setUpdateStatus(response.data.message1);
         }
       })
       .catch(err=> {
