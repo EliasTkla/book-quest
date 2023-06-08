@@ -152,6 +152,10 @@ form img {
     color: red;   
 }
 
+#npass-error {
+    display: none;
+}
+
 form #email, #username, #password {
     background-color: #ecebeb;
 }
