@@ -43,7 +43,6 @@ export default function Login() {
     }
 
     return (
-        // <div className='page-container'>
         <div className='form-container'>
             <button className='close-button' onClick={redirect}></button>
 
@@ -73,6 +72,5 @@ export default function Login() {
                 }
             </div>
         </div>
-        // </div>
     )
 }

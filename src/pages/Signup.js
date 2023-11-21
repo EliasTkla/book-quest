@@ -74,38 +74,36 @@ export default function Signup() {
     }
 
     return (
-        <div className='page-container'>
-            <div className='form-container'>
-                <button className='close-button' onClick={redirect}></button>
+        <div className='form-container'>
+            <button className='close-button' onClick={redirect}></button>
 
-                <div className='signup-image-wrapper'></div>
+            <div className='signup-image-wrapper'></div>
 
-                <div className='form-wrapper'>
-                    {loading ?
-                        <Loading />
-                        :
-                        <>
-                            <h1>Sign Up</h1>
+            <div className='form-wrapper'>
+                {loading ?
+                    <Loading />
+                    :
+                    <>
+                        <h1>Sign Up</h1>
 
-                            <form onSubmit={handleSubmit}>
-                                {errorMessage !== "" ? <h4 id='form-error'>{errorMessage}</h4> : ""}
+                        <form onSubmit={handleSubmit}>
+                            {errorMessage !== "" ? <h4 id='form-error'>{errorMessage}</h4> : ""}
 
-                                <label htmlFor='email'>Email <span id='email-error'>| Invalid</span></label>
-                                <input type="text" id="email" name="email" placeholder='Enter email' onChange={(e => setEmail(e.target.value))} autoComplete='on' />
+                            <label htmlFor='email'>Email <span id='email-error'>| Invalid</span></label>
+                            <input type="text" id="email" name="email" placeholder='Enter email' onChange={(e => setEmail(e.target.value))} autoComplete='on' />
 
-                                <label htmlFor='password'>Password <span id='pass-error'>| 8-20 characters</span></label>
-                                <input type="password" id="password" name="password" placeholder='Enter password' onChange={(e => setPassword(e.target.value))} />
+                            <label htmlFor='password'>Password <span id='pass-error'>| 8-20 characters</span></label>
+                            <input type="password" id="password" name="password" placeholder='Enter password' onChange={(e => setPassword(e.target.value))} />
 
-                                <label htmlFor="password-confirmation">Confirm Password <span id='confirm-error'>| Must match</span></label>
-                                <input type="password" id="password-confirmation" name="password-confirmation" placeholder='Confirm password' onChange={(e => setPasswordConfirmation(e.target.value))} />
+                            <label htmlFor="password-confirmation">Confirm Password <span id='confirm-error'>| Must match</span></label>
+                            <input type="password" id="password-confirmation" name="password-confirmation" placeholder='Confirm password' onChange={(e => setPasswordConfirmation(e.target.value))} />
 
-                                <button type='submit'>Register</button>
+                            <button type='submit'>Register</button>
 
-                                <p>Already have an account? <Link to='/login'>Login</Link></p>
-                            </form>
-                        </>
-                    }
-                </div>
+                            <p>Already have an account? <Link to='/login'>Login</Link></p>
+                        </form>
+                    </>
+                }
             </div>
         </div>
     )
