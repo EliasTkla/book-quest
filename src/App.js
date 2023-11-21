@@ -37,18 +37,18 @@ export default function App() {
                             <Route path='/' element={<Home />} />
                             <Route path='/explore' element={<Explore />} />
                             <Route path='/mylog' element={
-                                <ProtectedRoute>
+                                <ProtectedRoute path={"mylog"}>
                                     <MyLog />
                                 </ProtectedRoute>
                             } />
                             <Route path='/bookdetail/:id' element={<BookDetail />} />
                             <Route path='/login' element={
-                                <ProtectedRoute>
+                                <ProtectedRoute path={"login"}>
                                     <Login />
                                 </ProtectedRoute>
                             } />
                             <Route path='/signup' element={
-                                <ProtectedRoute>
+                                <ProtectedRoute path={"signup"}>
                                     <Signup />
                                 </ProtectedRoute>
                             } />

@@ -1,20 +1,18 @@
 import { useNavigate } from 'react-router-dom';
 import { useUserAuth } from '../context/UserAuthContext';
 
-const ProtectedRoute = ({ children }) => {
+const ProtectedRoute = ({ children, path }) => {
     const navigate = useNavigate();
     let { currentUser } = useUserAuth();
 
-    console.log(currentUser, children.type.name)
-
     if (!currentUser) {
-        if (children.type.name === "Login" || children.type.name === "Signup") {
+        if (path === "login" || path === "signup") {
             return children;
         } else {
             return navigate('/login');
         }
     } else {
-        if (children.type.name === "Login" || children.type.name === "Signup") {
+        if (path === "login" || path === "signup") {
             return navigate('/');
         } else {
             return children;
