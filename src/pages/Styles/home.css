@@ -1,0 +1,316 @@
+.intro-container {
+    width: 80%;
+    min-height: 80vh;
+    margin: auto;
+    padding: 125px 10% 0 10%;
+    display: grid;
+    grid-template-columns: auto;
+    column-gap: 50px;
+    position: relative;
+    overflow: hidden;
+}
+
+.intro-text {
+    width: 80%;
+    height: fit-content;
+    margin-top: 25px;
+    padding-bottom: 50px;
+    display: block;
+    position: relative;
+    z-index: 1;
+    text-align: left;
+    color: #1D222C;
+}
+
+.intro-text hr {
+    width: 35%;
+    float: left;
+    border: 1px solid #1D222C;
+}
+
+.intro-text h1 {
+    font-size: 4rem;
+    text-transform: uppercase;
+    font-weight: bolder;
+    color: black;
+}
+
+.intro-text p {
+    width: 60%;
+    margin-left: 0;
+    font-size: large;
+    line-height: 200%;
+    color: #1D222C;
+}
+
+.intro-text a {
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: x-large;
+    color: #EEEBE4;
+    background-color: #1D222C;
+    cursor: pointer;
+}
+
+.intro-text a:hover {
+    color: #EEEBE4;
+    background-color: #E36166;
+}
+
+.background-container {
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    right: -25px;
+    user-select: none;
+}
+
+.background-container img {
+    position: absolute;
+    z-index: 0;
+    border-radius: 5px;
+}
+
+.background-container img:nth-child(4) {
+    width: 500px;
+    margin: 825px auto auto -150px;
+    transform: rotateZ(-135deg);
+}
+
+.background-container img:nth-child(3) {
+    width: 500px;
+    margin: 400px auto auto 450px;
+    transform: rotateZ(-45deg);
+}
+
+.background-container img:nth-child(2) {
+    width: 600px;
+    margin: -350px auto auto 550px;
+    transform: rotateZ(-45deg);
+}
+
+.background-container img:nth-child(1) {
+    width: 400px;
+    margin: 50px auto auto 0px;
+    transform: rotateZ(45deg);
+}
+
+.slide-container {
+    width: 80%;
+    padding: 75px 10% 75px 10%;
+    height: fit-content;
+    background-color: white;
+}
+
+.slide-container hr {
+    width: 75px;
+    border: 1px solid #1D222C;
+    display: inline-block;
+}
+
+.slide-container h1 {
+    display: inline-block;
+    border-left: 2px solid #1D222C;
+    padding-left: 10px;
+    font-weight: normal;
+    text-transform: capitalize;
+}
+
+.slide-container .more-link {
+    margin-top: 30px;
+    padding-right: 35px;
+    float: right;
+    background: url('../../assets/images/arrow-right.svg') transparent no-repeat right center/ 25px;
+}
+
+.slide-container .more-link:hover {
+    color: #E36166;
+}
+
+.genre-text {
+    width: 80%;
+    margin: auto;
+    padding: 150px 10% 50px 10%;
+    display: block;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    text-align: center;
+    color: #1D222C;
+}
+
+.genre-text hr {
+    width: 50%;
+    border: 1px solid #1D222C;
+}
+
+.genre-text h1 {
+    font-size: 3.5rem;
+    text-transform: uppercase;
+    font-weight: bolder;
+    color: black;
+}
+
+.genre-text p {
+    width: 50%;
+    margin: auto;
+    font-size: large;
+    text-align: center;
+    line-height: 200%;
+    color: #1D222C;
+}
+
+.genre-container {
+    width: 80%;
+    height: fit-content;
+    display: grid;
+    margin: auto 10% auto 10%;
+    padding-bottom: 100px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 400px));
+    justify-content: center;
+    column-gap: 25px;
+    row-gap: 25px;
+    position: relative;
+    overflow: hidden;
+}
+
+.genre-container div {
+    width: 100%;
+    height: 150px;
+    display: inline-block;
+    border-radius: 5px;
+}
+
+.genre-container button {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    display: block;
+    border: none;
+    border-radius: 5px;
+    font-size: x-large;
+    cursor: pointer;
+    transition: .3s;
+    color: #EEEBE4;
+    backdrop-filter: blur(3px);
+    background-color: rgb(28, 33, 43, .5);
+}
+
+.genre-container button:hover {
+    backdrop-filter: blur(0px);
+    background-color: rgb(28, 33, 43, .25);
+}
+
+.genre-container div:nth-child(1) {
+    background: url('../../assets/images/fantasy.jpeg') no-repeat transparent center -50px / cover;
+}
+
+.genre-container div:nth-child(2) {
+    background: url('../../assets/images/crime.jpeg') no-repeat transparent center -175px/ cover;
+}
+
+.genre-container div:nth-child(3) {
+    background: url('../../assets/images/science.jpeg') no-repeat transparent center -100px/ cover;
+}
+
+.genre-container div:nth-child(4) {
+    background: url('../../assets/images/poetry.jpeg') no-repeat transparent center -215px/ cover;
+}
+
+.genre-container div:nth-child(5) {
+    background: url('../../assets/images/cooking.jpeg') no-repeat transparent center -250px/ cover;
+}
+
+.genre-container div:nth-child(6) {
+    background: url('../../assets/images/philosophy.jpeg') no-repeat transparent center -100px/ cover;
+}
+
+
+.genre-container div:nth-child(7) {
+    background: url('../../assets/images/travel.jpeg') no-repeat transparent center -300px/ cover;
+}
+
+.genre-container div:nth-child(8) {
+    background: url('../../assets/images/ficiton.jpeg') no-repeat transparent center -250px/ cover;
+}
+
+.genre-container div:nth-child(9) {
+    background: url('../../assets/images/religion.jpeg') no-repeat transparent center -300px/ cover;
+}
+
+@media (max-width: 1024px) {
+    .intro-text h1 {
+        font-size: 3.5rem;
+    }
+
+    .intro-text p {
+        width: 80%;
+    }
+
+    .genre-text h1 {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .intro-text {
+        width: 95%;
+        margin-top: 0px;
+    }
+
+    .intro-text h1 {
+        font-size: 3rem;
+    }
+
+    .intro-text p {
+        width: 90%;
+        font-size: medium;
+    }
+
+    .slide-container {
+        width: 90%;
+        padding: 75px 5% 75px 5%;
+    }
+
+    .slide-container .more-link {
+        margin: 10px auto 20px auto;
+        float: left;
+    }
+
+    .genre-text {
+        width: 90%;
+        padding: 150px 5% 50px 5%;
+    }
+
+    .genre-text h1 {
+        font-size: 2.5rem;
+    }
+
+    .genre-text p {
+        width: 80%;
+        font-size: medium;
+    }
+}
+
+@media (max-width: 425px) {
+    .intro-text {
+        width: 100%;
+    }
+
+    .intro-text h1 {
+        font-size: 2rem;
+    }
+
+    .intro-text p {
+        width: 100%;
+    }
+
+    .slide-container hr {
+        width: 5%;
+    }
+
+    .genre-text h1 {
+        font-size: 1.5rem;
+    }
+}

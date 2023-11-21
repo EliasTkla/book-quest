@@ -1,0 +1,43 @@
+.searchbar-container {
+    width: 90%;
+    height: 50px;
+    margin: auto auto 50px auto;
+    display: block;
+}
+
+.searchbar-container input {
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+#no-logs {
+    width: 100%;
+    margin: 2vh auto;
+    text-align: center;
+    font-weight: lighter;
+}
+
+.mylog-clear-search {
+    width: fit-content;
+    display: block;
+    margin: -25px auto 25px auto;
+    border: none;
+    font-size: medium;
+    background: transparent;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .searchbar-container input {
+        width: 90%;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+}
+
+@media (max-width: 425px) {
+    .mylog-clear-search {
+        padding-left: 5%;
+    }
+}

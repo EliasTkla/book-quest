@@ -1,0 +1,41 @@
+@font-face {
+    font-family: 'Lora-Regular';
+    src: url('./assets/fonts/Lora-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'PTSerif-Regular';
+    src: url('./assets/fonts/PTSerif-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'PTSerif-Bold';
+    src: url('./assets/fonts/PTSerif-Bold.ttf');
+}
+
+body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    width: 100%;
+    min-height: calc(100vh - 175px);
+    background-color: #EEEBE4;
+}
+
+button, a, p {
+    font-family: 'PTSerif-Regular', Georgia, 'Times New Roman', Times, serif;
+}
+
+a {
+    color: #1D222C;
+    text-decoration: none;
+}
+
+.page-container {
+    width: 80%;
+    margin: auto 10% auto 10%;
+    padding: 50px 0px 50px 0px;
+}

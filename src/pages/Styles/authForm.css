@@ -1,0 +1,162 @@
+.form-container {
+    width: 90%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    position: fixed;
+    display: grid;
+    grid-template-columns: auto 500px;
+    column-gap: 5%;
+    padding-right: 10%;
+    background-color: #EEEBE4;
+}
+
+.close-button {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 25px;
+    right: 50px;
+    border: none;
+    background: url("../../assets/images/x.svg") no-repeat transparent center/cover;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.close-button:hover {
+    transform: scale(1.15);
+}
+
+.login-image-wrapper {
+    height: 100%;
+    overflow: hidden;
+    border-radius: 5px;
+    background: url("../../assets/images/login.jpg") no-repeat transparent center/cover;
+}
+
+.signup-image-wrapper {
+    height: 100%;
+    overflow: hidden;
+    border-radius: 5px;
+    background: url("../../assets/images/signup.jpg") no-repeat transparent center/cover;
+}
+
+.image-wrapper img {
+    height: 100%;
+    margin: auto;
+    display: none;
+}
+
+.form-wrapper {
+    width: 100%;
+    height: fit-content;
+    margin: auto;
+}
+
+.form-wrapper h1 {
+    text-align: start;
+}
+
+.form-wrapper form {
+    width: 80%;
+    padding: 10%;
+    border: 2px solid rgb(28, 33, 43, 0.25);
+    border-radius: 5px;
+}
+
+.form-wrapper form label {
+    display: block;
+    margin: 15px 0 10px 0;
+    font-size: large;
+}
+
+.form-wrapper form span {
+    display: none;
+    color: red;
+}
+
+.form-wrapper form input {
+    width: 90%;
+    padding: 5%;
+    border: 2px solid rgb(28, 33, 43, 0.25);
+    border-radius: 5px;
+    font-size: medium;
+    background-color: transparent;
+}
+
+.form-wrapper form input:focus {
+    outline: transparent;
+    border: 2px solid rgb(28, 33, 43);
+}
+
+.form-wrapper form h4 {
+    font-weight: normal;
+    text-align: center;
+    color: red;
+}
+
+.form-wrapper form p {
+    margin: auto;
+    font-size: medium;
+    text-align: start;
+}
+
+.form-wrapper form a {
+    color: #E36166;
+}
+
+.form-wrapper form a:hover {
+    color: #1D222C;
+}
+
+.form-wrapper form button {
+    min-width: 80%;
+    width: 100%;
+    margin: 35px auto 15px auto;
+    padding: 5%;
+    border: none;
+    border-radius: 5px;
+    font-size: larger;
+    color: #EEEBE4;
+    background-color: #1D222C;
+    cursor: pointer;
+}
+
+.form-wrapper form button:hover {
+    background-color: #E36166;
+}
+
+@media (max-width: 1440px) {
+    .form-container {
+        width: 100%;
+        padding-right: 0;
+        grid-template-columns: 500px;
+        justify-content: center;
+    }
+
+    .login-image-wrapper {
+        display: none;
+    }
+
+    .signup-image-wrapper {
+        display: none;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .close-button {
+        left: 50px;
+    }
+
+    .form-wrapper form {
+        border: none;
+    }
+
+    .form-wrapper h1 {
+        text-align: center;
+    }
+}

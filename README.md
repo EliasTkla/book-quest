@@ -1,30 +1,36 @@
-# BookQuest
+## BookQuest
 
-Search for books and keep a digital log through your reading experience.
+An application used for searching and browsing books.
 
-Back-end link: https://github.com/EliasTkla/bookquest-back-end
+This application allows users to search and view books queried from Googles Book api. 
+Also, users are able to register an account to save books and create a personal collection.
 
-Live link: https://bookq.netlify.app/
+## Project Screen Shot(s)
 
-## Description
 
-Bookquest allows users to search for books pulled from the google book api and view information on them. 
-In addition, users are able to register for an account and create a personal log with any books available within the library.
 
-## Getting Started
+## Installation and Setup Instructions
 
-### Installing
+Clone down this repository. You will need `node` and `npm` installed globally on your machine.  
 
-The client react folder requires the installation of npm, axios, and jquery.
+Installation:
 
-    % npm install
-    % npm install axios
-    % npm install jquery
+`npm install`
+`npm install axios` 
+`npm install firebase`
+`npm install react-query`  
+`npm install react-content-loader`  
+`npm install jquery` 
 
-### Run App
-  
-    % npm start
-  
-## Authors
+To Run Test Suite:  
 
-Elias Tokola
+`npm test`  
+
+To Start Server:
+
+`npm start`  
+
+To Visit App:
+
+`localhost:3000/ideas`  
+

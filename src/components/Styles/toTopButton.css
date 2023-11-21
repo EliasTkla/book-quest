@@ -1,0 +1,28 @@
+.top_btn {
+    width: 40px;
+    height: 40px;
+    position: fixed;
+    right: 5%;
+    bottom: 75px;
+    z-index: 4;
+    border: none;
+    border-radius: 50%;
+    background-color: transparent;
+    cursor: pointer;
+    transition: .2s;
+    background: url('../../assets/images/chevrons-up.svg') transparent no-repeat center/cover;
+}
+
+.top_btn:hover {
+    transform: scale(1.25);
+}
+
+.hide_btn {
+    opacity: 0;
+}
+
+@media (max-width: 600px) {
+    .top_btn {
+        right: 0;
+    }
+}

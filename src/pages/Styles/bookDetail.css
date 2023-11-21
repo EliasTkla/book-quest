@@ -1,0 +1,133 @@
+.book-content {
+    min-width: auto;
+    max-width: 1200px;
+    height: fit-content;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 400px auto;
+    color: #1D222C;
+}
+
+.book-content img {
+    width: 400px;
+    height: 480px;
+    height: 600px;
+    z-index: 1;
+}
+
+.detail-container {
+    min-height: 500px;
+    padding-top: 100px;
+}
+
+.detail-container h1, h3 {
+    padding-left: 25px;
+}
+
+.detail-container h3 {
+    font-weight: lighter;
+}
+
+.sub-detail-container {
+    width: auto;
+    min-height: 330px;
+    margin-left: -100px;
+    padding: 25px 50px 50px 125px;
+    background-color: #DAD4C5;
+}
+
+.sub-detail-container a {
+    padding-left: 30px;
+    font-size: larger;
+    text-align: left;
+    text-decoration: underline;
+    background: url("../../assets/images/link.svg") transparent no-repeat left / 25px;
+}
+
+.sub-detail-container a:hover {
+    color: #E36166;
+    background: url("../../assets/images/link-2.svg") transparent no-repeat left / 25px;
+}
+
+.sub-detail-container button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: large;
+    transition: 0;
+    color: #F1EEE3;
+    background-color: #1D222C;
+    cursor: pointer;
+}
+
+.sub-detail-container button:hover {
+    background-color: #E36166;
+}
+
+.sub-detail-container h4, p {
+    text-align: justify;
+    font-weight: 400;
+    line-height: 150%
+}
+
+/* Modified from: https://codepen.io/hesguru/pen/BaybqXv */
+.rating {
+    width: fit-content;
+    height: 50px;
+    padding-left: 25px;
+    user-select: none;
+}
+
+.rating:not(:checked)>input {
+    position: absolute;
+    top: -9999px;
+}
+
+.rating:not(:checked)>label {
+    float: right;
+    width: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 30px;
+    color: #ccc;
+    margin: 2px;
+    transition: .2s;
+}
+
+.rating:not(:checked)>label:before {
+    content: '★ ';
+}
+
+.rating>input:checked~label {
+    color: #ffc700;
+}
+
+/* ^ Modified from: https://codepen.io/hesguru/pen/BaybqXv */
+
+@media (max-width: 1024px) {
+    .book-content {
+        max-width: 400px;
+        grid-template-columns: auto;
+    }
+
+    .detail-container {
+        padding-top: 25px;
+    }
+
+    .sub-detail-container {
+        margin-left: 0;
+        padding: 25px;
+    }
+}
+
+@media (max-width: 425px) {
+    .book-content {
+        max-width: 95%;
+        grid-template-columns: auto;
+    }
+
+    .book-content img {
+        width: 100%;
+        height: auto;
+    }
+}

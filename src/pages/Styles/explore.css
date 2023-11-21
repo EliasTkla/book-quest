@@ -1,0 +1,14 @@
+.clear-search {
+    width: fit-content;
+    display: block;
+    border: none;
+    font-size: medium;
+    background: transparent;
+    cursor: pointer;
+}
+
+@media (max-width: 425px) {
+    .clear-search {
+        padding-left: 5%;
+    }
+}

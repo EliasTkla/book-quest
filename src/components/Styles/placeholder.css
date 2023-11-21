@@ -1,0 +1,13 @@
+.placeholder {
+    width: 475px;
+    height: 350px;
+    margin: 15px;
+    display: inline-block;
+}
+
+@media (max-width: 768px) {
+    .placeholder {
+        width: 210px;
+        height: 400px;
+    }
+}
