@@ -40,10 +40,10 @@ export default function Home() {
                 </div>
 
                 <div className='background-container'>
-                    <img src={Cover1} alt="book cover" />
-                    <img src={Cover2} alt="book cover" />
-                    <img src={Cover3} alt="book cover" />
-                    <img src={Cover4} alt="book cover" />
+                    <img src={Cover1} alt="book cover" width={400} height={"auto"} loading='lazy' />
+                    <img src={Cover2} alt="book cover" width={600} height={"auto"} loading='lazy' />
+                    <img src={Cover3} alt="book cover" width={500} height={"auto"} loading='lazy' />
+                    <img src={Cover4} alt="book cover" width={500} height={"auto"} loading='lazy' />
                 </div>
             </div>
 

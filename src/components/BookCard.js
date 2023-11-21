@@ -8,8 +8,8 @@ export default function BookCard(props) {
 
     return (
         <Link className={'book-card'} key={book.id} to={'/bookdetail/' + book.volumeInfo.title.replace(/\s+/g, '-')} state={{ page: props.returnPage, data: book }}>
-            <img className='background-theme' src={"https://books.google.com/books/publisher/content/images/frontcover/" + book.id + "?fife=w800-h1000&source=gbs_api"} alt='book cover' loading="lazy" />
-            <img className='cover' src={"https://books.google.com/books/publisher/content/images/frontcover/" + book.id + "?fife=w800-h1000&source=gbs_api"} alt='book cover' loading="lazy" />
+            <img className='background-theme' src={"https://books.google.com/books/publisher/content/images/frontcover/" + book.id + "?fife=w800-h1000&source=gbs_api"} alt='book cover' width={200} height={"auto"} loading="lazy" />
+            <img className='cover' src={"https://books.google.com/books/publisher/content/images/frontcover/" + book.id + "?fife=w800-h1000&source=gbs_api"} alt='book cover' width={"auto"} height={"auto"} loading="lazy" />
 
             <div>
                 <h1>{book.volumeInfo.title}</h1>
