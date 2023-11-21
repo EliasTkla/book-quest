@@ -32,8 +32,8 @@ export default function BookSlides({ category, sliders }) {
                 <div className='list-slider'>
                     <h2>{category}</h2>
                     <div>
-                        <img src={RightArrow} alt='right arrow button' onClick={() => { document.getElementById(category).scrollLeft += 700; }} />
-                        <img src={LeftArrow} alt='left arrow button' onClick={() => { document.getElementById(category).scrollLeft -= 700; }} />
+                        <img src={RightArrow} alt='right arrow button' width={25} height={25} onClick={() => { document.getElementById(category).scrollLeft += 700; }} />
+                        <img src={LeftArrow} alt='left arrow button' width={25} height={25} onClick={() => { document.getElementById(category).scrollLeft -= 700; }} />
                     </div>
                     <hr />
                 </div>
