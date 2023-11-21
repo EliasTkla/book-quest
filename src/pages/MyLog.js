@@ -22,7 +22,7 @@ export default function MyLog() {
             const log = await getSavedBooks(currentUser.uid);
             loggedBooks = log;
         } catch (error) {
-            console.log(error);
+            // console.log(error);
             loggedBooks = null;
         }
 
@@ -35,7 +35,7 @@ export default function MyLog() {
                     const res = await Axios.get('https://www.googleapis.com/books/v1/volumes?q=' + loggedBooks[i] + '&key=' + process.env.REACT_APP_API_KEY + '&maxResults=1');
                     list.push(res.data.items[0]);
                 } catch (error) {
-                    console.log(error);
+                    // console.log(error);
                     return null;
                 }
             }

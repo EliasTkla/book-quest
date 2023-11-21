@@ -28,7 +28,7 @@ export default function Login() {
                 await logIn(email, password);
                 navigate("/mylog");
             } catch (error) {
-                console.log(error);
+                // console.log(error);
                 setLoading(false);
                 setErrorMessage("Invalid email or password!");
             }

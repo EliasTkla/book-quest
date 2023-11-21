@@ -203,40 +203,40 @@
 }
 
 .genre-container div:nth-child(1) {
-    background: url('../../assets/images/fantasy.jpeg') no-repeat transparent center -50px / cover;
+    background: url('../../assets/images/fantasy.webp') no-repeat transparent center -50px / cover;
 }
 
 .genre-container div:nth-child(2) {
-    background: url('../../assets/images/crime.jpeg') no-repeat transparent center -175px/ cover;
+    background: url('../../assets/images/crime.webp') no-repeat transparent center -175px/ cover;
 }
 
 .genre-container div:nth-child(3) {
-    background: url('../../assets/images/science.jpeg') no-repeat transparent center -100px/ cover;
+    background: url('../../assets/images/science.webp') no-repeat transparent center -100px/ cover;
 }
 
 .genre-container div:nth-child(4) {
-    background: url('../../assets/images/poetry.jpeg') no-repeat transparent center -215px/ cover;
+    background: url('../../assets/images/poetry.webp') no-repeat transparent center -215px/ cover;
 }
 
 .genre-container div:nth-child(5) {
-    background: url('../../assets/images/cooking.jpeg') no-repeat transparent center -250px/ cover;
+    background: url('../../assets/images/cooking.webp') no-repeat transparent center -250px/ cover;
 }
 
 .genre-container div:nth-child(6) {
-    background: url('../../assets/images/philosophy.jpeg') no-repeat transparent center -100px/ cover;
+    background: url('../../assets/images/philosophy.webp') no-repeat transparent center -100px/ cover;
 }
 
 
 .genre-container div:nth-child(7) {
-    background: url('../../assets/images/travel.jpeg') no-repeat transparent center -300px/ cover;
+    background: url('../../assets/images/travel.webp') no-repeat transparent center -300px/ cover;
 }
 
 .genre-container div:nth-child(8) {
-    background: url('../../assets/images/ficiton.jpeg') no-repeat transparent center -250px/ cover;
+    background: url('../../assets/images/ficiton.webp') no-repeat transparent center -250px/ cover;
 }
 
 .genre-container div:nth-child(9) {
-    background: url('../../assets/images/religion.jpeg') no-repeat transparent center -300px/ cover;
+    background: url('../../assets/images/religion.webp') no-repeat transparent center -300px/ cover;
 }
 
 @media (max-width: 1024px) {

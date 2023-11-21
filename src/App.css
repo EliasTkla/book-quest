@@ -1,16 +1,14 @@
 @font-face {
-    font-family: 'Lora-Regular';
-    src: url('./assets/fonts/Lora-Regular.ttf');
-}
-
-@font-face {
     font-family: 'PTSerif-Regular';
     src: url('./assets/fonts/PTSerif-Regular.ttf');
+    font-display: swap;
 }
 
 @font-face {
     font-family: 'PTSerif-Bold';
     src: url('./assets/fonts/PTSerif-Bold.ttf');
+    font-display: swap;
+
 }
 
 body {
@@ -26,7 +24,7 @@ main {
 }
 
 button, a, p {
-    font-family: 'PTSerif-Regular', Georgia, 'Times New Roman', Times, serif;
+    font-family: 'PTSerif-Regular', Arial, Helvetica, sans-serif;
 }
 
 a {

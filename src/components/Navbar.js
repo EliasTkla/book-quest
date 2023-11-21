@@ -20,7 +20,6 @@ export default function Navbar() {
         try {
             await logOut();
             navigate("/login");
-            console.log("Signed out successfully");
         } catch (error) {
             console.log(error);
         }
@@ -99,9 +98,9 @@ export default function Navbar() {
                                             |
                                         </li>
                                         <li>
-                                            <Link className="profile-btn" to="#" onClick={() => { toggleSideBar() }}>
+                                            <p className="profile-btn" to="#" onClick={() => { toggleSideBar() }}>
                                                 {currentUser.email ? currentUser.email : "...."}
-                                            </Link>
+                                            </p>
                                         </li>
                                         <li>
                                             <button className="logout-btn" onClick={() => { handleLogout() }}></button>
@@ -109,7 +108,7 @@ export default function Navbar() {
                                     </>
                                     :
                                     <li>
-                                        <button className="signup-btn" onClick={() => { navigate("/login"); toggleSideBar(); }}>
+                                        <button className="login-btn" onClick={() => { navigate("/login"); toggleSideBar(); }}>
                                             Login
                                         </button>
                                     </li>

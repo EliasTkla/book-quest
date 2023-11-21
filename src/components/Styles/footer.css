@@ -3,23 +3,21 @@ footer {
     left: 0;
     right: 0;
     bottom: 0;
-    padding-top: 50px;
-    padding-bottom: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: grid;
+    grid-template-columns: repeat(4, 150px);
+    column-gap: 10px;
+    justify-content: center;
     background-color: #1D222C;
 }
 
-footer div {
-    width: 600px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 150px);
-}
-
 footer a {
-    width: fit-content;
+    width: 100%;
+    padding: 25px 0 25px 0;
     font-size: large;
-    color: #EEEBE4;
     text-align: center;
+    color: #EEEBE4;
 }
 
 footer a:hover {
@@ -27,15 +25,14 @@ footer a:hover {
 }
 
 @media (max-width: 768px) {
-    footer div {
-        width: 300px;
-        grid-template-columns: repeat(auto-fill, 50%);
+    footer {
+        grid-template-columns: repeat(4, 120px);
     }
 }
 
-@media (max-width: 320px) {
-    footer div {
-        width: 250px;
-        grid-template-columns: 40% 60%;
+@media (max-width: 530px) {
+    footer {
+        grid-template-columns: repeat(2, 120px);
+        row-gap: 10px;
     }
 }

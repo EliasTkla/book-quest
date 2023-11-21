@@ -1,10 +1,10 @@
 import { React } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Styles/home.css';
-import Cover1 from '../assets/images/cover1.jpeg';
-import Cover2 from '../assets/images/cover2.jpeg';
-import Cover3 from '../assets/images/cover3.jpeg';
-import Cover4 from '../assets/images/cover4.jpeg';
+import Cover1 from '../assets/images/cover1.webp';
+import Cover2 from '../assets/images/cover2.webp';
+import Cover3 from '../assets/images/cover3.webp';
+import Cover4 from '../assets/images/cover4.webp';
 import BookSlides from '../components/BookSlides';
 
 export default function Home() {

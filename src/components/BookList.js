@@ -50,7 +50,6 @@ export default function BookList({ data, isError, isFetching, mylog }) {
                 return null;
             }
         })
-        console.log(filtered)
 
         if (filtered.length === 0) {
             return <ErrorMessage pageError={"empty"} />;

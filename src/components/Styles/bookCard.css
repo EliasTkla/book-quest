@@ -58,14 +58,17 @@
     text-align: left;
 }
 
-.book-card h3 {
+.book-card h1 {
     height: 50px;
+    border: none;
+    font-size: larger;
     text-align: left;
     color: whitesmoke;
 }
 
-.book-card h5 {
+.book-card h2 {
     height: 35px;
+    font-size: medium;
     color: whitesmoke;
 }
 
@@ -109,7 +112,7 @@
         padding: 5px;
     }
 
-    .book-card h3 {
+    .book-card h1 {
         height: 20px;
         margin: 15px 0;
         white-space: nowrap;
@@ -117,7 +120,7 @@
         text-overflow: ellipsis;
     }
 
-    .book-card h5 {
+    .book-card h2 {
         max-height: 20px;
         margin: 0;
         word-spacing: 5px;

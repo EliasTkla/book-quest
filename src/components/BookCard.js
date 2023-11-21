@@ -12,8 +12,8 @@ export default function BookCard(props) {
             <img className='cover' src={"https://books.google.com/books/publisher/content/images/frontcover/" + book.id + "?fife=w800-h1000&source=gbs_api"} alt='book cover' loading="lazy" />
 
             <div>
-                <h3>{book.volumeInfo.title}</h3>
-                <h5>By {book.volumeInfo.authors ? book.volumeInfo.authors : 'N/A'}</h5>
+                <h1>{book.volumeInfo.title}</h1>
+                <h2>By {book.volumeInfo.authors ? book.volumeInfo.authors : 'N/A'}</h2>
                 {window.innerWidth > 425 ? <p>{book.volumeInfo.description ? book.volumeInfo.description : 'Not Available'}</p> : ''}
             </div>
         </Link>

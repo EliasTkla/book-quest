@@ -25,7 +25,7 @@ export default function Signup() {
             await signUp(email, password);
             navigate("/login");
         } catch (error) {
-            console.log(error);
+            // console.log(error);
             setLoading(false);
             setErrorMessage("The email is already in use!");
         }

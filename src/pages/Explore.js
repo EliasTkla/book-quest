@@ -19,7 +19,7 @@ export default function Explore() {
                 const res = await Axios.get('https://www.googleapis.com/books/v1/volumes?q=' + query + '&key=' + process.env.REACT_APP_API_KEY + '&maxResults=40');
                 return res.data.items;
             } catch (error) {
-                console.log(error);
+                // console.log(error);
                 return null;
             }
         } else {
