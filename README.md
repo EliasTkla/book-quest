@@ -7,6 +7,8 @@ Also, users are able to register an account to save books and create a personal 
 
 ## Project Screen Shot(s)
 
+![Screenshot1](https://github.com/EliasTkla/bookquest/assets/60025074/4156cd2d-e0cc-4016-b423-d5b6be450982)
+  ![Screenshot2](https://github.com/EliasTkla/bookquest/assets/60025074/73f01c71-99a2-48a8-91c0-5cda2cf73890)
 
 
 ## Installation and Setup Instructions
