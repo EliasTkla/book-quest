@@ -10,7 +10,7 @@ export default function SearchBar({ enableFilter }) {
     const [searchInput, setSearchInput] = useState('');
 
     useEffect(() => {
-        setSearchInput(search);
+        setSearchInput(search.includes("genre") ? search.split("-")[1] : search);
     }, [search]);
 
     function updateSearch(e) {
@@ -23,7 +23,7 @@ export default function SearchBar({ enableFilter }) {
             }
         } else {
             setSearchParams(params => {
-                params.set("search", e.target.ariaLabel);
+                params.set("search", "genre-" + e.target.ariaLabel);
                 return params;
             });
         }
@@ -32,10 +32,10 @@ export default function SearchBar({ enableFilter }) {
     return (
         <>
             {!enableFilter ?
-                <input className='search-input' type="search" name='searchBar' placeholder="Search title, author, genre ..." value={searchInput} onChange={e => setSearchInput(e.target.value)} onKeyDown={(e) => { if (e.key === 'Enter') { updateSearch(e) } }} />
+                <input className='search-input' type="search" name='searchBar' placeholder="Search for a book..." value={searchInput} onChange={e => setSearchInput(e.target.value)} onKeyDown={(e) => { if (e.key === 'Enter') { updateSearch(e) } }} />
                 :
                 <div id='search-container'>
-                    <input className='search-input' type="search" name='searchBar' placeholder="Search title, author, genre ..." value={searchInput} onChange={e => setSearchInput(e.target.value)} onKeyDown={(e) => { if (e.key === 'Enter') { updateSearch(e) } }} />
+                    <input className='search-input' type="search" name='searchBar' placeholder="Search for a book..." value={searchInput} onChange={e => setSearchInput(e.target.value)} onKeyDown={(e) => { if (e.key === 'Enter') { updateSearch(e) } }} />
 
                     <div className='filter-container'>
                         <img src={LeftArrow} alt='left arrow button' onClick={() => { document.getElementById('filter-menu').scrollLeft -= 200; }} />

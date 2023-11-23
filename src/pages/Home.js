@@ -13,7 +13,7 @@ export default function Home() {
     // Function to navigate to the explore page with a specified genre search
     function searchGenre(e) {
         if (e.target.ariaLabel !== "") {
-            navigate('/explore?search=' + e.target.ariaLabel);
+            navigate('/explore?search=genre-' + e.target.ariaLabel);
         }
     }
 
@@ -55,7 +55,7 @@ export default function Home() {
                     Explore more
                 </Link>
 
-                <BookSlides category={"nonFiction"} sliders={false} />
+                <BookSlides category={'Cooking'} sliders={false} />
             </div>
 
             <div className='genre-text'>

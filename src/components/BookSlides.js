@@ -8,12 +8,12 @@ import BookCard from './BookCard';
 import Placeholder from './Placeholder';
 import ErrorMessage from './ErrorMessage';
 
-export default function BookSlides({ category, sliders }) {
+export default function BookSlides({ category, sliders, currentBookId }) {
 
     // fetches data for category passed
     const { data, isFetching, isError } = useQuery([category], async () => {
         try {
-            const res = await Axios.get('https://www.googleapis.com/books/v1/volumes?q=' + category + '&key=' + process.env.REACT_APP_API_KEY + '&maxResults=15');
+            const res = await Axios.get('https://www.googleapis.com/books/v1/volumes?q=subject:' + category + '&key=' + process.env.REACT_APP_API_KEY + '&maxResults=15');
             return res.data.items;
         } catch (error) {
             return null;
@@ -31,11 +31,11 @@ export default function BookSlides({ category, sliders }) {
             {sliders && (
                 <div className='list-slider'>
                     <h2>{category}</h2>
+                    <hr />
                     <div>
                         <img src={RightArrow} alt='right arrow button' width={25} height={25} onClick={() => { document.getElementById(category).scrollLeft += 700; }} />
                         <img src={LeftArrow} alt='left arrow button' width={25} height={25} onClick={() => { document.getElementById(category).scrollLeft -= 700; }} />
                     </div>
-                    <hr />
                 </div>
             )}
 
@@ -56,11 +56,23 @@ export default function BookSlides({ category, sliders }) {
                             let cover = book.volumeInfo.imageLinks && book.volumeInfo.imageLinks.thumbnail;
 
                             if (cover && title && authors) {
-                                return (
-                                    <span key={book.id}>
-                                        <BookCard bookData={book} returnPage={'/explore'} />
-                                    </span>
-                                )
+                                if (currentBookId) {
+                                    if (book.id !== currentBookId) {
+                                        return (
+                                            <span key={book.id}>
+                                                <BookCard bookData={book} returnPage={'/explore'} />
+                                            </span>
+                                        )
+                                    } else {
+                                        return null;
+                                    }
+                                } else {
+                                    return (
+                                        <span key={book.id}>
+                                            <BookCard bookData={book} returnPage={'/explore'} />
+                                        </span>
+                                    )
+                                }
                             } else {
                                 return null;
                             }
@@ -68,6 +80,13 @@ export default function BookSlides({ category, sliders }) {
                     </>
                 }
             </div>
+
+            {!sliders && (
+                <div className='home-list-slider'>
+                    <img src={LeftArrow} alt='left arrow button' width={25} height={25} onClick={() => { document.getElementById(category).scrollLeft -= 700; }} />
+                    <img src={RightArrow} alt='right arrow button' width={25} height={25} onClick={() => { document.getElementById(category).scrollLeft += 700; }} />
+                </div>
+            )}
         </>
     )
 }

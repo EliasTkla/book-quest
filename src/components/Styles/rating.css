@@ -1,0 +1,49 @@
+.rating-container {
+    width: fit-content;
+    height: 50px;
+    margin: 0;
+    padding-left: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rating-container h3 {
+    padding-right: 5px;
+    font-size: x-large;
+}
+
+.rating-container h4 {
+    padding-left: 5px;
+    font-size: larger;
+    font-weight: lighter;
+}
+
+.rating {
+    width: fit-content;
+    height: 50px;
+    display: inline-flex;
+    direction: rtl;
+    background-color: aquamarine;
+}
+
+.rating input[type="radio"] {
+    display: none;
+}
+
+.rating label {
+    display: block;
+    width: 50px;
+    height: 50px;
+    background: url('../../assets/images/star.svg') no-repeat #EEEBE4 center/35px;
+}
+
+.rating input[type="radio"]:checked~label {
+    background: url('../../assets/images/star-checked.svg') no-repeat #EEEBE4 center/35px;
+}
+
+@media (max-width: 1024px) {
+    .rating-container {
+        padding-left: 0px;
+    }
+}

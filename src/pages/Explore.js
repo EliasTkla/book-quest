@@ -1,8 +1,8 @@
 import { React, useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useQuery } from "react-query";
-import './Styles/explore.css';
 import Axios from 'axios';
+import './Styles/explore.css';
 import BookSlides from '../components/BookSlides.js';
 import SearchBar from '../components/SearchBar.js';
 import BookList from '../components/BookList.js';
@@ -16,7 +16,7 @@ export default function Explore() {
     const { data: searchResults, isError, isFetching, refetch } = useQuery(['searchResults'], async () => {
         if (query !== "") {
             try {
-                const res = await Axios.get('https://www.googleapis.com/books/v1/volumes?q=' + query + '&key=' + process.env.REACT_APP_API_KEY + '&maxResults=40');
+                const res = await Axios.get('https://www.googleapis.com/books/v1/volumes?q=' + (query.includes("genre") ? "subject:" + query.split("-")[1] : query) + '&key=' + process.env.REACT_APP_API_KEY + '&maxResults=40');
                 return res.data.items;
             } catch (error) {
                 // console.log(error);
@@ -47,7 +47,7 @@ export default function Explore() {
 
             {!searchState ?
                 <>
-                    <BookSlides category={'Fiction'} sliders={true} />
+                    <BookSlides category={'Art'} sliders={true} />
                     <BookSlides category={'Fantasy'} sliders={true} />
                     <BookSlides category={'History'} sliders={true} />
                 </>

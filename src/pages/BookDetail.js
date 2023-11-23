@@ -4,6 +4,8 @@ import $ from 'jquery';
 import { useUserAuth } from '../context/UserAuthContext';
 import './Styles/bookDetail.css';
 import Loading from '../components/Loading';
+import BookSlides from '../components/BookSlides';
+import Rating from '../components/Rating';
 
 export default function BookDetail() {
 
@@ -14,6 +16,7 @@ export default function BookDetail() {
     const navigate = useNavigate();
     const location = useLocation();
     const book = location.state.data;
+    const categories = book.volumeInfo.categories ? book.volumeInfo.categories : book.volumeInfo.authors;
 
     // Effect to check if the book is saved by the current user
     useEffect(() => {
@@ -89,48 +92,48 @@ export default function BookDetail() {
             {isLoading ?
                 <Loading />
                 :
-                <div className="book-content">
+                <>
 
-                    <img src={"https://books.google.com/books/publisher/content/images/frontcover/" + book.id + "?fife=w800-h1000&source=gbs_api"} alt='Book cover' />
 
-                    <div className='detail-container'>
-                        <h1>{book.volumeInfo.title ? book.volumeInfo.title : "N/A"} </h1>
+                    <div className="book-content">
 
-                        <h3>By {book.volumeInfo.authors ? book.volumeInfo.authors : 'N/A'}</h3>
+                        <img src={"https://books.google.com/books/publisher/content/images/frontcover/" + book.id + "?fife=w800-h1000&source=gbs_api"} alt='Book cover' />
 
-                        <div className="rating" >
-                            <input type="radio" id="star5" name="rate" value="5" defaultChecked={book.volumeInfo.averageRating === 5} />
-                            <label htmlFor="star5" title="text">5 stars</label>
-                            <input type="radio" id="star4" name="rate" value="4" defaultChecked={book.volumeInfo.averageRating === 4} />
-                            <label htmlFor="star4" title="text">4 stars</label>
-                            <input type="radio" id="star3" name="rate" value="3" defaultChecked={book.volumeInfo.averageRating === 3} />
-                            <label htmlFor="star3" title="text">3 stars</label>
-                            <input type="radio" id="star2" name="rate" value="2" defaultChecked={book.volumeInfo.averageRating === 2} />
-                            <label htmlFor="star2" title="text">2 stars</label>
-                            <input type="radio" id="star1" name="rate" value="1" defaultChecked={book.volumeInfo.averageRating === 1} />
-                            <label htmlFor="star1" title="text">1 star</label>
-                        </div>
+                        <div className='detail-container'>
+                            <h1>{book.volumeInfo.title ? book.volumeInfo.title : "N/A"} </h1>
 
-                        <div className='sub-detail-container'>
-                            <button onClick={() => { editLog() }}>{logStatus ? <span>Saved</span> : <span>Save Book</span>}</button><span id='popup'></span><br />
+                            <h2>Author(s)  &#8226; {book.volumeInfo.authors ? book.volumeInfo.authors : 'N/A'}</h2>
 
-                            <br />
+                            <Rating ratingValue={book.volumeInfo.averageRating} ratings={book.volumeInfo.ratingsCount} />
 
-                            <Link to={book.volumeInfo.previewLink ? book.volumeInfo.previewLink : "#"} target="_blank">Read</Link>
+                            <div className='sub-detail-container'>
+                                <button onClick={() => { editLog() }}>{logStatus ? <span>Saved</span> : <span>Save Book</span>}</button><span id='popup'></span><br />
 
-                            <br />
+                                <div>
+                                    <h4>Publisher  &#8226;  <span>{book.volumeInfo.publisher ? book.volumeInfo.publisher : "N/A"}</span></h4>
+                                    <h4>Publish Date  &#8226;  <span>{book.volumeInfo.publishedDate ? book.volumeInfo.publishedDate : "N/A"}</span></h4>
+                                    <h4>Pages  &#8226;  <span>{book.volumeInfo.pageCount ? book.volumeInfo.pageCount : "N/A"}</span></h4>
+                                    <h4>Genres  &#8226;  <span>{book.volumeInfo.categories ? book.volumeInfo.categories : "N/A"}</span></h4>
+                                </div>
 
-                            <h4>Genres: {book.volumeInfo.categories ? book.volumeInfo.categories : "N/A"}</h4>
+                                <p>{book.volumeInfo.description ? book.volumeInfo.description : 'Not Available'}</p>
 
-                            <h4>Pages: {book.volumeInfo.pageCount ? book.volumeInfo.pageCount : "N/A"}</h4>
-
-                            <h4>Summary:</h4>
-                            <p>{book.volumeInfo.description ? book.volumeInfo.description : 'Not Available'}</p>
+                                <Link to={book.volumeInfo.previewLink ? book.volumeInfo.previewLink : "#"} target="_blank">Read More</Link>
+                            </div>
                         </div>
                     </div>
-                </div>
-            }
 
+                    <div className='related-books-list'>
+                        <div className='similiar-books-title'>
+                            <hr />
+                            <h2>Similiar Books</h2>
+                            <hr />
+                        </div>
+
+                        <BookSlides category={categories} sliders={false} currentBookId={book.id} />
+                    </div>
+                </>
+            }
         </div>
     )
 }
