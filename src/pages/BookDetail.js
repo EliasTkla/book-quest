@@ -102,7 +102,7 @@ export default function BookDetail() {
                         <div className='detail-container'>
                             <h1>{book.volumeInfo.title ? book.volumeInfo.title : "N/A"} </h1>
 
-                            <h2>Author(s)  &#8226; {book.volumeInfo.authors ? book.volumeInfo.authors : 'N/A'}</h2>
+                            <h2>Author(s) - {book.volumeInfo.authors ? book.volumeInfo.authors : 'N/A'}</h2>
 
                             <Rating ratingValue={book.volumeInfo.averageRating} ratings={book.volumeInfo.ratingsCount} />
 
@@ -110,10 +110,10 @@ export default function BookDetail() {
                                 <button onClick={() => { editLog() }}>{logStatus ? <span>Saved</span> : <span>Save Book</span>}</button><span id='popup'></span><br />
 
                                 <div>
-                                    <h4>Publisher  &#8226;  <span>{book.volumeInfo.publisher ? book.volumeInfo.publisher : "N/A"}</span></h4>
-                                    <h4>Publish Date  &#8226;  <span>{book.volumeInfo.publishedDate ? book.volumeInfo.publishedDate : "N/A"}</span></h4>
-                                    <h4>Pages  &#8226;  <span>{book.volumeInfo.pageCount ? book.volumeInfo.pageCount : "N/A"}</span></h4>
-                                    <h4>Genres  &#8226;  <span>{book.volumeInfo.categories ? book.volumeInfo.categories : "N/A"}</span></h4>
+                                    <h4>Publisher | <span>{book.volumeInfo.publisher ? book.volumeInfo.publisher : "N/A"}</span></h4>
+                                    <h4>Publish Date | <span>{book.volumeInfo.publishedDate ? book.volumeInfo.publishedDate : "N/A"}</span></h4>
+                                    <h4>Pages | <span>{book.volumeInfo.pageCount ? book.volumeInfo.pageCount : "N/A"}</span></h4>
+                                    <h4>Genres | <span>{book.volumeInfo.categories ? book.volumeInfo.categories : "N/A"}</span></h4>
                                 </div>
 
                                 <p>{book.volumeInfo.description ? book.volumeInfo.description : 'Not Available'}</p>

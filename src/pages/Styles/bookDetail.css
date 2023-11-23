@@ -73,6 +73,8 @@
     font-size: large;
 }
 
+.sub-detail-container div h4 {}
+
 .sub-detail-container div span {
     font-weight: lighter;
 }
