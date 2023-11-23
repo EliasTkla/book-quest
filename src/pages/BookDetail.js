@@ -93,8 +93,6 @@ export default function BookDetail() {
                 <Loading />
                 :
                 <>
-
-
                     <div className="book-content">
 
                         <img src={"https://books.google.com/books/publisher/content/images/frontcover/" + book.id + "?fife=w800-h1000&source=gbs_api"} alt='Book cover' />
