@@ -100,7 +100,7 @@ export default function BookDetail() {
                         <div className='detail-container'>
                             <h1>{book.volumeInfo.title ? book.volumeInfo.title : "N/A"} </h1>
 
-                            <h2>Author(s) - {book.volumeInfo.authors ? book.volumeInfo.authors : 'N/A'}</h2>
+                            <h2>Author(s) - <span>{book.volumeInfo.authors ? book.volumeInfo.authors : 'N/A'}</span></h2>
 
                             <Rating ratingValue={book.volumeInfo.averageRating} ratings={book.volumeInfo.ratingsCount} />
 

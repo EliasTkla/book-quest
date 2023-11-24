@@ -23,7 +23,7 @@
     padding-left: 25px;
 }
 
-.detail-container h2 {
+.detail-container h2 span {
     font-weight: lighter;
 }
 

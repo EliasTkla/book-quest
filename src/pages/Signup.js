@@ -75,7 +75,10 @@ export default function Signup() {
 
     return (
         <div className='form-container'>
-            <button className='close-button' onClick={redirect}></button>
+            <button className='close-button signup-close-button' onClick={redirect}>
+                <span></span>
+                <span></span>
+            </button>
 
             <div className='signup-image-wrapper'></div>
 

@@ -44,7 +44,10 @@ export default function Login() {
 
     return (
         <div className='form-container'>
-            <button className='close-button' onClick={redirect}></button>
+            <button className='close-button' onClick={redirect}>
+                <span></span>
+                <span></span>
+            </button>
 
             <div className='login-image-wrapper'></div>
 

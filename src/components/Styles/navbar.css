@@ -193,11 +193,15 @@ nav {
     }
 
     .navbar-links li {
-        width: 200px;
+        width: 150px;
         margin: 25px auto;
         display: block;
-        text-align: center;
+        text-align: left;
         list-style: none;
+    }
+
+    .navbar-links li a {
+        text-align: left;
     }
 }
 

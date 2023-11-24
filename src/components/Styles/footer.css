@@ -6,8 +6,8 @@ footer {
     padding-top: 10px;
     padding-bottom: 10px;
     display: grid;
-    grid-template-columns: repeat(4, 150px);
-    column-gap: 10px;
+    grid-template-columns: repeat(4, auto);
+    column-gap: 25px;
     justify-content: center;
     background-color: #1D222C;
 }
@@ -24,15 +24,32 @@ footer a:hover {
     color: #E36166;
 }
 
-@media (max-width: 768px) {
-    footer {
-        grid-template-columns: repeat(4, 120px);
+@media (max-width: 550px) {
+    footer a {
+        font-size: medium;
     }
 }
 
-@media (max-width: 530px) {
+@media (max-width: 375px) {
     footer {
-        grid-template-columns: repeat(2, 120px);
-        row-gap: 10px;
+        width: 100%;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        display: grid;
+        grid-template-columns: repeat(3, auto);
+        column-gap: 25px;
+        row-gap: 5px;
+    }
+
+    footer a {
+        padding: 12.5px 0 12.5px 0;
+        font-size: small;
+    }
+
+    footer a:nth-child(4) {
+        grid-area: 2 / 1 / span 1 / span 3;
     }
 }

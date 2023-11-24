@@ -274,13 +274,15 @@
     }
 
     .slide-container .more-link {
-        margin: 10px auto 20px auto;
-        float: left;
+        width: fit-content;
+        display: block;
+        margin-left: 5%;
+        float: none;
     }
 
     .genre-text {
         width: 90%;
-        padding: 150px 5% 50px 5%;
+        padding: 100px 5% 50px 5%;
     }
 
     .genre-text h1 {
@@ -291,9 +293,38 @@
         width: 80%;
         font-size: medium;
     }
+
+    .background-container img:nth-child(1) {
+        width: 300px;
+        margin: 0px auto auto 150px;
+        transform: rotateZ(45deg);
+    }
+
+    .background-container img:nth-child(2) {
+        width: 500px;
+        margin: -350px auto auto 450px;
+        transform: rotateZ(-45deg);
+    }
+
+    .background-container img:nth-child(3) {
+        width: 400px;
+        margin: 400px auto auto 350px;
+        transform: rotateZ(-45deg);
+    }
+
+    .background-container img:nth-child(4) {
+        width: 400px;
+        margin: 710px auto auto -100px;
+        transform: rotateZ(-135deg);
+    }
 }
 
 @media (max-width: 425px) {
+    .intro-container {
+        padding: 75px 10% 0 10%;
+        min-height: 70vh;
+    }
+
     .intro-text {
         width: 100%;
     }
@@ -323,10 +354,27 @@
         margin-left: 5%;
     }
 
-    .slide-container .more-link {
-        width: fit-content;
-        display: block;
-        margin-left: 5%;
-        float: none;
+    .background-container img:nth-child(1) {
+        width: 200px;
+        margin: 150px auto auto 200px;
+        transform: rotateZ(45deg);
+    }
+
+    .background-container img:nth-child(2) {
+        width: 400px;
+        margin: -350px auto auto 0px;
+        transform: rotateZ(-45deg);
+    }
+
+    .background-container img:nth-child(3) {
+        width: 300px;
+        margin: 500px auto auto 150px;
+        transform: rotateZ(-45deg);
+    }
+
+    .background-container img:nth-child(4) {
+        width: 300px;
+        margin: 825px auto auto -150px;
+        transform: rotateZ(-135deg);
     }
 }
