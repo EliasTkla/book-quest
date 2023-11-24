@@ -313,4 +313,20 @@
     .genre-text h1 {
         font-size: 1.5rem;
     }
+
+    .slide-container {
+        width: 100%;
+        padding: 75px 0 75px 0;
+    }
+
+    .slide-container hr {
+        margin-left: 5%;
+    }
+
+    .slide-container .more-link {
+        width: fit-content;
+        display: block;
+        margin-left: 5%;
+        float: none;
+    }
 }

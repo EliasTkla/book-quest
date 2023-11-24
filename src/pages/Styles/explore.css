@@ -5,6 +5,8 @@
     font-size: medium;
     background: transparent;
     cursor: pointer;
+    color: #1D222C;
+    text-decoration: none;
 }
 
 @media (max-width: 425px) {

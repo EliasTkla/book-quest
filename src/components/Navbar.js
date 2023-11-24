@@ -119,7 +119,7 @@ export default function Navbar() {
                 </div>
             </nav>
 
-            <button id="sidebar-toggler" className="toggle" title="sidebar toggle" onClick={() => { toggleSideBar() }}>
+            <button id="sidebar-toggler" className="toggle" title="sidebar toggle" onClick={toggleSideBar}>
                 <span></span>
                 <span></span>
                 <span></span>

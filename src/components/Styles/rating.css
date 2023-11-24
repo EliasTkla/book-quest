@@ -24,7 +24,6 @@
     height: 50px;
     display: inline-flex;
     direction: rtl;
-    background-color: aquamarine;
 }
 
 .rating input[type="radio"] {
@@ -35,15 +34,28 @@
     display: block;
     width: 50px;
     height: 50px;
-    background: url('../../assets/images/star.svg') no-repeat #EEEBE4 center/35px;
+    background: url('../../assets/images/star.svg') no-repeat transparent center/35px;
 }
 
 .rating input[type="radio"]:checked~label {
-    background: url('../../assets/images/star-checked.svg') no-repeat #EEEBE4 center/35px;
+    background: url('../../assets/images/star-checked.svg') no-repeat transparent center/35px;
 }
 
 @media (max-width: 1024px) {
     .rating-container {
         padding-left: 0px;
+    }
+}
+
+@media (max-width: 425px) {
+    .rating-container {
+        padding-bottom: 15px;
+    }
+
+    .rating-container h4 {
+        display: block;
+        position: absolute;
+        margin-top: 100px;
+        left: 5px;
     }
 }

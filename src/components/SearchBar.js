@@ -34,13 +34,13 @@ export default function SearchBar({ enableFilter }) {
             {!enableFilter ?
                 <input className='search-input' type="search" name='searchBar' placeholder="Search for a book..." value={searchInput} onChange={e => setSearchInput(e.target.value)} onKeyDown={(e) => { if (e.key === 'Enter') { updateSearch(e) } }} />
                 :
-                <div id='search-container'>
+                <div className='search-container'>
                     <input className='search-input' type="search" name='searchBar' placeholder="Search for a book..." value={searchInput} onChange={e => setSearchInput(e.target.value)} onKeyDown={(e) => { if (e.key === 'Enter') { updateSearch(e) } }} />
 
                     <div className='filter-container'>
                         <img src={LeftArrow} alt='left arrow button' onClick={() => { document.getElementById('filter-menu').scrollLeft -= 200; }} />
 
-                        <div id='filter-menu'>
+                        <div className='filter-menu'>
                             <span aria-label={'Fiction'} onClick={updateSearch}>Fiction</span>
                             <span aria-label={'Crime'} onClick={updateSearch}>Crime</span>
                             <span aria-label={'Science'} onClick={updateSearch}>Science</span>

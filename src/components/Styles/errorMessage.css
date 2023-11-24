@@ -21,3 +21,9 @@
         font-size: larger;
     }
 }
+
+@media (max-width: 425px) {
+    .error-container {
+        width: 90%;
+    }
+}

@@ -150,7 +150,8 @@
 
 @media (max-width: 768px) {
     .close-button {
-        left: 50px;
+        top: 2.5%;
+        right: 2.5%;
     }
 
     .form-wrapper form {
@@ -159,5 +160,34 @@
 
     .form-wrapper h1 {
         text-align: center;
+    }
+}
+
+@media (max-width: 425px) {
+    .form-container {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        display: block;
+    }
+
+    .form-wrapper {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .form-wrapper h1 {
+        margin: 22.5px auto;
+        padding: 0 0 0 5%;
+        text-align: left;
+    }
+
+    .form-wrapper form {
+        width: 90%;
+        margin: 50px auto;
+        padding: 0;
     }
 }

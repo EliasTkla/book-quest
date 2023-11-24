@@ -37,3 +37,10 @@ a {
     margin: auto 10% auto 10%;
     padding: 50px 0px 50px 0px;
 }
+
+@media (max-width: 425px) {
+    .page-container {
+        width: 100%;
+        margin: auto;
+    }
+}
