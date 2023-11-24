@@ -13,8 +13,11 @@
     }
 }
 
-@media (max-width: 425px) {
-    .clear-search {
-        padding-left: 5%;
+@media (max-width: 550px) {
+    .search-results {
+        grid-template-columns: repeat(auto-fill, 160px);
+        column-gap: 25px;
+        row-gap: 25px;
+        justify-content: space-evenly;
     }
 }

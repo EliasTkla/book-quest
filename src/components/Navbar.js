@@ -8,7 +8,6 @@ export default function Navbar() {
     let { currentUser, logOut } = useUserAuth();
     const navigate = useNavigate();
     const [sidebar, setSideBar] = useState(false);
-    const [screenWidth, setScreenWidth] = useState();
     const [isLoading, setIsLoading] = useState(true);
 
     // Effect to set loading state for auth buttons to load
@@ -25,34 +24,21 @@ export default function Navbar() {
         }
     }
 
-    // Effect to add a resize event listener
-    useEffect(() => {
-        window.addEventListener('resize', windowWidth);
-    })
-
-    // Function to update screen width on window resize
-    function windowWidth() {
-        setScreenWidth(window.innerWidth);
-    };
-
     function toggleSideBar() {
-        if (screenWidth <= 768) {
+        setSideBar(!sidebar);
 
-            setSideBar(!sidebar);
+        if (sidebar) {
+            $("body").css("overflow-y", "hidden");
+            document.getElementById("overlay").style.width = "100%";
+            document.getElementById("top-nav").style.right = "0";
 
-            if (sidebar) {
-                $("body").css("overflow-y", "hidden");
-                document.getElementById("overlay").style.width = "100%";
-                document.getElementById("top-nav").style.right = "0";
+            document.getElementById("sidebar-toggler").classList.add("toggle-animation");
+        } else {
+            $("body").css("overflow-y", "auto");
+            document.getElementById("overlay").style.width = "0px";
+            document.getElementById("top-nav").style.right = "-350px";
 
-                document.getElementById("sidebar-toggler").classList.add("toggle-animation");
-            } else {
-                $("body").css("overflow-y", "auto");
-                document.getElementById("overlay").style.width = "0px";
-                document.getElementById("top-nav").style.right = "-350px";
-
-                document.getElementById("sidebar-toggler").classList.remove("toggle-animation");
-            }
+            document.getElementById("sidebar-toggler").classList.remove("toggle-animation");
         }
     }
 
@@ -77,12 +63,12 @@ export default function Navbar() {
                             :
                             <>
                                 <li>
-                                    <Link to="/" onClick={() => { toggleSideBar() }}>
+                                    <Link to="/" onClick={toggleSideBar}>
                                         Home
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link to="/explore" onClick={() => { toggleSideBar() }}>
+                                    <Link to="/explore" onClick={toggleSideBar}>
                                         Explore
                                     </Link>
                                 </li>
@@ -90,7 +76,7 @@ export default function Navbar() {
                                 {currentUser ?
                                     <>
                                         <li>
-                                            <Link to="/mylog" onClick={() => { toggleSideBar() }}>
+                                            <Link to="/mylog" onClick={toggleSideBar}>
                                                 My Log
                                             </Link>
                                         </li>
@@ -98,12 +84,12 @@ export default function Navbar() {
                                             |
                                         </li>
                                         <li>
-                                            <p className="profile-btn" to="#" onClick={() => { toggleSideBar() }}>
+                                            <p className="profile-btn" to="#" onClick={toggleSideBar}>
                                                 {currentUser.email ? currentUser.email : "...."}
                                             </p>
                                         </li>
                                         <li>
-                                            <button className="logout-btn" onClick={() => { handleLogout() }}></button>
+                                            <button className="logout-btn" onClick={handleLogout}></button>
                                         </li>
                                     </>
                                     :
@@ -125,7 +111,7 @@ export default function Navbar() {
                 <span></span>
             </button>
 
-            <div id="overlay" onClick={() => { toggleSideBar() }}></div>
+            <div id="overlay" onClick={toggleSideBar}></div>
         </>
     )
 }

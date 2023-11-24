@@ -135,3 +135,34 @@
         display: none;
     }
 }
+
+@media (max-width: 550px) {
+    .book-card {
+        width: 160px;
+        height: 325px;
+        display: block;
+    }
+
+    .background-theme {
+        width: 125%;
+    }
+
+    .cover {
+        width: 150px;
+        height: 225px;
+    }
+
+    .book-card div {
+        width: 150px;
+        height: 80px;
+        padding: 5px;
+    }
+
+    .book-card h1 {
+        font-size: medium;
+    }
+
+    .book-card h2 {
+        font-size: small;
+    }
+}
